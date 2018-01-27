@@ -1,7 +1,6 @@
 "# usc-navigation-2018"
 
 # Engineers
-
 - Kishore Venkateshan - kishorev@usc.edu
 - Evan Paul - evanpaul@usc.edu
 - Jingxing Yang - jingxiny@usc.edu
@@ -10,4 +9,5 @@
 - Zhirui Feng (Zephyr) - fihezro@gmail.com / zhiruife@usc.edu
 - Jun Guo - junguo@usc.edu
 - Fnu Avi - avi@usc.edu
+- Sitao Min - sitaomin@usc.edu
 - Han Zhang - zhan645@usc.edu
