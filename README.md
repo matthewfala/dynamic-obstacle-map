@@ -13,3 +13,4 @@
 - Han Zhang - zhan645@usc.edu
 - Michael Root - rootm@usc.edu
 - Wanlong Lin - wanlongl@usc.edu
+- Hsin Pan - hsinpan@usc.edu
