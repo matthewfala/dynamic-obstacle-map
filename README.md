@@ -8,3 +8,4 @@ Jingxing Yang - jingxiny@usc.edu
 Jie Ji - jiej@usc.edu
 Hsuan-Hau Liu - hsuanhal@usc.edu
 Jun Guo - junguo@usc.edu
+Sitao Min - sitaomin@usc.edu
