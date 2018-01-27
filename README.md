@@ -12,3 +12,4 @@
 - Sitao Min - sitaomin@usc.edu
 - Han Zhang - zhan645@usc.edu
 - Michael Root - rootm@usc.edu
+- Wanlong Lin - wanlongl@usc.edu
