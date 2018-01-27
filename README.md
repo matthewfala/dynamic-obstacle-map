@@ -11,3 +11,4 @@
 - Fnu Avi - avi@usc.edu
 - Sitao Min - sitaomin@usc.edu
 - Han Zhang - zhan645@usc.edu
+- Michael Root - rootm@usc.edu
