@@ -10,3 +10,4 @@
 - Zhirui Feng (Zephyr) - fihezro@gmail.com / zhiruife@usc.edu
 - Jun Guo - junguo@usc.edu
 - Fnu Avi - avi@usc.edu
+- Han Zhang - zhan645@usc.edu
