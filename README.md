@@ -2,3 +2,4 @@
 
 # Engineers
 Kishore Venkateshan - kishorev@usc.edu
+Evan Paul - evanpaul@usc.edu
