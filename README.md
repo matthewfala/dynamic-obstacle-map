@@ -5,3 +5,4 @@
 Kishore Venkateshan - kishorev@usc.
 Evan Paul - evanpaul@usc.edu
 Jingxing Yang - jingxiny@usc.edu
+Fnu Avi - avi@usc.edu
