@@ -14,3 +14,4 @@
 - Michael Root - rootm@usc.edu
 - Wanlong Lin - wanlongl@usc.edu
 - Hsin Pan - hsinpan@usc.edu
+- Angel Gonzalez aigonzal@usc.edu
