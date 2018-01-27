@@ -9,3 +9,4 @@
 - Hsuan-Hau Liu - hsuanhal@usc.edu
 - Zhirui Feng (Zephyr) - fihezro@gmail.com / zhiruife@usc.edu
 - Jun Guo - junguo@usc.edu
+- Fnu Avi - avi@usc.edu
