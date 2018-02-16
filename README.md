@@ -18,3 +18,4 @@
 - Katherine Sing - ksing@usc.edu
 - Kuiren Su - kuirensu@usc.edu
 - Jiho Kim - jihok@usc.edu
+- Shin Yee Tan - shinyeet@usc.edu
