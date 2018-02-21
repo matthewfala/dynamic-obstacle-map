@@ -1,34 +1,73 @@
 class World:
-    'World class for the physics engine.'
+    'World class for the physics engine. It is essential a robot class since the robot is the center of the world, which means that everything will move relatively to the robot.'
+
     # class variables
     gravity = 9.8
 
     # constructor
     def __init__(self):
-        self.actorList = {}
-        self.numOfObjects = 0
+        self.actorList = {} # list of actors
+        self.velocity = [0, 0, 0] # velocity of the world
+        self.facing = [1, 0, 0] # initially facing x axis
 
+    # main functions
+    def update(self): # keep updating the postiion of all objects
+
+    def create_object(self, name, position, velocity):
+        self.actorList[self.numOfObjects] = Actor(name, position, velocity)
+
+    def move(self, direction, acceleration):
+        # update velocity and position
+
+
+    # helper functions
     def display_objects(self):
         print self.actorList
 
-    def create_object(self, name, weight, position, velocity):
-        self.actorList[self.numOfObjects] = Actor(name, weight, position, velocity)
-        numOfObjects += 1
 
 class Actor:
     'Base class for all objects in the world.'
     
-    def __init__(self, name, weight,  position, velocity):
+    def __init__(self, name, position):
         self.name = name
-        self.weight = weight
         self.position = position
-        self.velocity = velocity
 
-    def get_details():
-        print self.name, self.weight, self.position, self.velocity
+class Gate:
+    'Gate class for challenge 1.'
 
-def update():
-    return
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+class Buoy:
+    'Buoy class for challenge 2.'
+
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+class ChipDispenser:
+    'ChipDispenser class for challenge 3.'
+
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+class Slot:
+    'Slot machine class for challenge 4.'
+
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+class Roulette:
+    'Roulette class for challenge 5.'
+
+    def __init__(self, name, position):
+        self.name = name
+        self.position = position
+
+
 
 # initialization
 x = World()
