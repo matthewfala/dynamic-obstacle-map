@@ -16,5 +16,16 @@
 - Hsin Pan - hsinpan@usc.edu
 - Angel Gonzalez - aigonzal@usc.edu
 - Katherine Sing - ksing@usc.edu
--Kuiren Su - kuirensu@usc.edu
+- Kuiren Su - kuirensu@usc.edu
 - Jiho Kim - jihok@usc.edu
+
+
+##########################################################################
+# OBSTACLES
+##########################################################################
+- Gate
+- Dice Buoy
+- Chip Dispenser
+- Slot Machine
+- Roulette
+- Cashier Bins
