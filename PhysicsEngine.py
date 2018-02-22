@@ -63,10 +63,14 @@ class Actor:
     def __init__(self, position):
         self.position = position # position of the actor relative to the robot
 
-    def update(self, w, a, t):
+    def update(self, v, w, a, t):
         theta = w * t + 0.5 * math.pow(a, t) 
         m = np.array([[math.cos(theta), -math.sin(theta)], [math.sin(theta), math.cos(theta)]])
         self.position = m.dot(self.position)
+        
+        # translation (provide vehicle velocity)
+        dx = np.multiply(v, t)
+        self.position = np.subtract(self.position, dx)
 
 class Gate(Actor):
     'Gate class for challenge 1.'
