@@ -2,117 +2,78 @@ import numpy as np
 import math
 
 class World:
-    'World class for the physics engine. It is essential a robot class since the robot is the center of the world, which means that everything will move relatively to the robot.'
+    'World class for the physics engine.'
 
-    # class variables
-    gravity = 9.8
-
-    # constructor
     def __init__(self):
-        self.actorList = [] # list of actors/objects in the world
-        self.velocity = [0, 0, 0] # velocity of the world
-
-        self.w = 0 #math.pi/4 # angular velocity
-        self.a = 0 # alpha; angular acceleration
-        self.t = 1 # time
-
-    # Continuously update the position of actors in our world.
-    def update(self):
-        for a in self.actorList:
-            a.update(self.w, self.a, self.t)
+        self.actorList = [] # container for the objects in this world
         
-    # Create an object in our world every time we detect one.
+        # define position of objects
+        actorList.append(Robot(np.array([0, 0, 0])))
+        actorList.append(Gate(np.array([5, 3, 0])))
+        actorList.append(Buoy(np.array([7, 5, 0])))
+        actorList.append(ChipDispenser(np.array([7, 7, 0])))
+        actorList.append(SlotMachine(np.array([14, 5, 0])))
+        actorList.append(ChipDispenser(np.array([14, 7, 0])))
+        actorList.append(Roulette(np.array([20, 10, 0])))
+        actorList.append(Register(np.array([24, 13, 0])))
+        actorList.append(Bin(np.array([24, 14, 0])))
+
+    # Create new objects in case we encounter unaccounted things.
+    # There could be multiple buoys and bins.
     def create_actor(self, actorType, position):
-        # Use actorType to determine which type of actor to create.
         if actorType == 0:
             self.actorList.append(Actor(position))
         elif actorType == 1:
-            self.actorList.append(Gate(position))
-        elif actorType == 2:
             self.actorList.append(Buoy(position))
-        elif actorType == 3:
-            self.actorList.append(ChipDispenser(position))
-        elif actorType == 4:
-            self.actorList.append(SlotMachine(position))
-        elif actorType == 5:
-            self.actorList.append(Roulette(position))
-        elif actorType == 6:
-            self.actorList.append(Register(position))
-        elif actorType == 7:
+        elif actorType == 2:
             self.actorList.append(Bin(position))
         else:
-            print "Invalid actor type code."
+            print "Invalid actor type."
 
-
-    # Control movement of the robot/world.
-    def move(self, movement):
-        for a in self.actorList:
-            a.position -= movement
-
-        return 0
-
-    # Display all the actors in our world.
+    # Display everything we know about the world.
     def display_actors(self):
         for a in self.actorList:
             print '-', a.name, a.position
 
 class Actor:
-    'Base class for all actors in our world.'
+    'Base class for all actors.'
     name = "Obstacle"
-   
+
     def __init__(self, position):
-        self.position = position # position of the actor relative to the robot
+        self.position = position # position of actor in the world
 
-    def update(self, v, w, a, t):
-        theta = w * t + 0.5 * math.pow(a, t) 
-        m = np.array([[math.cos(theta), -math.sin(theta)], [math.sin(theta), math.cos(theta)]])
-        self.position = m.dot(self.position)
-        
-        # translation (provide vehicle velocity)
-        dx = np.multiply(v, t)
-        self.position = np.subtract(self.position, dx)
+class Robot(Actor):
+    'Robot class for our robot.'
+    name = "Robot"
 
-class Gate(Actor):
-    'Gate class for challenge 1.'
-    name = "Gate"
+    def __init__(self, position):
+        self.velocity = [0, 0, 0] # initial velocity
+        self.w = 0 # angular velocity
+        self.a = 0 # alpha; angular acceleration
+        self.t = 0 # time
 
 class Buoy(Actor):
-    'Buoy class for challenge 2.'
+    'Buoy class.'
     name = "Buoy"
 
 class ChipDispenser(Actor):
-    'ChipDispenser class.'
+    'Chip dispenser class. Could have at least 2.'
     name = "Chip Dispenser"
 
 class SlotMachine(Actor):
-    'Slot machine class for challenge 3.'
+    'Slot machine class.'
     name = "Slot Machine"
 
 class Roulette(Actor):
-    'Roulette class for challenge 3.'
+    'Roulette class.'
     name = "Roulette"
 
 class Register(Actor):
-    'Cashier register class for the final challenge.'
+    'Cashier Register class.'
     name = "Register"
 
 class Bin(Actor):
     'Bins/funnels with different colors.'
     name = "Bin"
 
-
 r = World()
-r.create_actor(0, np.array([0,1]))
-r.create_actor(1, np.array([0,4]))
-print "System: Detected two objects"
-r.display_actors()
-print ""
-
-while(True):
-    print "System: Which way should we move?"
-    x = input("x axis: ")
-    y = input("y axis: ")
-    r.move([x, y])
-    r.update()
-    r.display_actors()
-    print ""
