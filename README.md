@@ -18,7 +18,7 @@
 - Katherine Sing - ksing@usc.edu
 - Kuiren Su - kuirensu@usc.edu
 - Jiho Kim - jihok@usc.edu
-
+- Matthew Fala - fala@usc.edu
 
 ##########################################################################
 # OBSTACLES
