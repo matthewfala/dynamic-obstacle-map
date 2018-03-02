@@ -34,5 +34,6 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-# Python compiled code
+# Python
 *.pyc
+numpy/

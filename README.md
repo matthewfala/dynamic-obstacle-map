@@ -19,3 +19,19 @@
 - Kuiren Su - kuirensu@usc.edu
 - Jiho Kim - jihok@usc.edu
 - Shin Yee Tan - shinyeet@usc.edu
+- Matthew Fala - fala@usc.edu
+
+##########################################################################
+# OBSTACLES
+##########################################################################
+- Gate
+- Dice Buoy
+- Chip Dispenser
+- Slot Machine
+- Roulette
+- Cashier Bins
+
+
+#########################################################################
+# K-ORDER MATH ENGINE
+#########################################################################
