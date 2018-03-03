@@ -20,6 +20,7 @@
 - Jiho Kim - jihok@usc.edu
 - Shin Yee Tan - shinyeet@usc.edu
 - Matthew Fala - fala@usc.edu
+- Congxin Cheng - congxin@usc.edu
 
 ##########################################################################
 # OBSTACLES
