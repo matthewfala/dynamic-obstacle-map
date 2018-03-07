@@ -33,7 +33,7 @@ class Emulator:
     out_file = None
 
 
-    def __init__(self, initial_file):
+    def __init__(self, initial_file, out_file):
         '''
         Initial the position of actors in realworld.
         Args:
@@ -41,6 +41,7 @@ class Emulator:
         '''
         self.realworld = world.World()
         self.initial_file = initial_file
+        self.out_file = out_file
         reset()
 
     def reset(self):
