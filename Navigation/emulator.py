@@ -2,7 +2,7 @@ import numpy as np
 import math
 import world
 
-class Emulator():
+class Emulator:
     ''' Emulation the real world
 
                     +-> Environment +-+
