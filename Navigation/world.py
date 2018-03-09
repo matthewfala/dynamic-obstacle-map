@@ -30,10 +30,16 @@ class World:
         else:
             print "Invalid actor type."
 
+    # Deletes actor from world
+    def delete_actor(self, actor):
+        self.actorList.remove(actor)
+
     # Display everything we know about the world.
     def display_actors(self):
         for a in self.actorList:
             print '-', a.name, a.position
+
+
 
 class Actor:
     'Base class for all actors.'
