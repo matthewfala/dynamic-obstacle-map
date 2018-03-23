@@ -16,24 +16,6 @@ from math import sin, cos, acos, sqrt
 #     class if possible. For example look at the Vector Class
 ##################################################################################################################
 class kordermath:
-    # @Brief: Convert from angle in degrees to radians
-    # @Author: Kishore Venkateshan (kishorev@usc.edu)
-    # @Param: degrees  - The angle in degrees
-    # @Return: The new angle measured in radians
-    @classmethod
-    def convert_degrees_to_radians(cls, degrees):
-        return np.deg2rad(degrees)
-
-
-    # @Brief: Convert from angle in radians to degrees
-    # @Author: Kishore Venkateshan (kishorev@usc.edu)
-    # @Param: radians  - The angle in degrees
-    # @Return: The new angle measured in degrees
-    @classmethod
-    def convert_radians_to_degrees(cls, radians):
-        return np.rad2deg(radians)
-
-
     # @Brief: Clamps a value between min and max values
     #         Supported Types: (float, int)
     # @Author: Kishore Venkateshan (kishorev@usc.edu)
@@ -110,6 +92,36 @@ class kordermath:
 
     ###########################################################################################
     # @Brief:
+    # 'angle' respresents the arc length subtended between two unit vectors.
+    # Why angle instead of float?
+    # --- Using float decouples degrees and radians. You could potentially end up passing in 
+    #     a degree to a function that was expecting radians. Or you could convert to degrees
+    #     and forget to change it back to radians which will end up using incorrect values.
+    # --- An angle class could encapsulate a bunch of other angle related math such as wrapping
+    #     angles, normalizing from -pi to pi and so on.
+    # @Author: Kishore Venkateshan (kishorev@usc.edu)
+    ###########################################################################################
+    class angle:
+        # @Brief: Convert from angle in degrees to radians
+        # @Author: Kishore Venkateshan (kishorev@usc.edu)
+        # @Param: degrees  - The angle in degrees
+        # @Return: The new angle measured in radians
+        @classmethod
+        def convert_degrees_to_radians(cls, degrees):
+            return np.deg2rad(degrees)
+
+
+        # @Brief: Convert from angle in radians to degrees
+        # @Author: Kishore Venkateshan (kishorev@usc.edu)
+        # @Param: radians  - The angle in degrees
+        # @Return: The new angle measured in degrees
+        @classmethod
+        def convert_radians_to_degrees(cls, radians):
+            return np.rad2deg(radians)
+
+
+    ###########################################################################################
+    # @Brief:
     # 'vector' respresents a point or a direction in 3D space.
     # Our co-ordinate system will follow the convention:
     # Y Axis is forward
@@ -119,6 +131,10 @@ class kordermath:
     # @Author: Kishore Venkateshan (kishorev@usc.edu)
     ###########################################################################################
     class vector:
+        @classmethod
+        def zero(cls):
+            return kordermath.vector(0.0, 0.0, 0.0)
+
         @classmethod
         def up(cls):
             return kordermath.vector(0.0, 0.0, 1.0)
