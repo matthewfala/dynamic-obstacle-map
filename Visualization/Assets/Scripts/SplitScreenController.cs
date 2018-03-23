@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SplitScreenController : MonoBehaviour {
 
@@ -25,6 +26,8 @@ public class SplitScreenController : MonoBehaviour {
 	float translationSpeed = 0.1f;
 	float rotationSpeed = 0.1f;
 	float zoomSpeed = 0.5f;
+
+	bool isMouseOnUI;
 
 	enum CameraType {
 		MAIN,
@@ -59,6 +62,9 @@ public class SplitScreenController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		isMouseOnUI = false;
+
 		// we don't use these cameras to project the view for several reasons
 		// e.g. we might sometimes need several subviews using the main camera with different
 		// view points and if we directly use the origin MainCamera instance change of one view
@@ -99,56 +105,67 @@ public class SplitScreenController : MonoBehaviour {
 			// TODO: for follow mode, I'm considering adding another way to zoom in and out: changing the fieldOfView
 		}
 
-		if (Input.GetMouseButtonDown (0) || Input.GetMouseButtonDown (1)) {
-			// record the current mouse position as our base point
-			mouseOrigin = Input.mousePosition;
-			int _index = 0;
-			// which view are we opperating
-			switch (modeSelection.value) {
-			case 0:
-				// single view
-				break;
-			case 1:
-				// split horizontally
-				_index = Input.mousePosition.x<Screen.width/2 ? 0 : 1;
-				break;
-			case 2:
-				// split vertically
-				_index = Input.mousePosition.y<Screen.height/2 ? 1 : 0;
-				break;
-			case 3:
-				// split into 4 subviews
-				_index = Input.mousePosition.x < Screen.width / 2 ? 0 : 1;
-				_index = Input.mousePosition.y < Screen.height / 2 ? _index + 2 : _index;
-				break;
+		if (Input.GetMouseButtonDown (0)) {
+			if (EventSystem.current.IsPointerOverGameObject ()) {
+				isMouseOnUI = true;
+			} else {
+				isMouseOnUI = false;
 			}
-			CurrentCamera = ViewPoints [_index];
-			CurrentCameraType = ViewTypes [_index];
 		}
-		// Rotation
-		if (Input.GetMouseButton(0) && !Input.GetMouseButton(1)) {
-			// to avoid choas, only work when there's exactly one mouse key pressed down
-			// other views should never rotate
-			if (CurrentCameraType != CameraType.MAIN) 
-				return;
-			float _deltaX = Input.mousePosition.x - mouseOrigin.x;
-			float _deltaY = Input.mousePosition.y - mouseOrigin.y;
-			Vector3 _temptOrientation = CurrentCamera.transform.eulerAngles;
-			_temptOrientation.x -= _deltaY * rotationSpeed;
-			_temptOrientation.y += _deltaX * rotationSpeed;
-			CurrentCamera.transform.eulerAngles = _temptOrientation;
-			mouseOrigin = Input.mousePosition;
+
+		if (!isMouseOnUI) {
+			if (Input.GetMouseButtonDown (0) || Input.GetMouseButtonDown (1)) {
+				// record the current mouse position as our base point
+				mouseOrigin = Input.mousePosition;
+				int _index = 0;
+				// which view are we opperating
+				switch (modeSelection.value) {
+				case 0:
+					// single view
+					break;
+				case 1:
+					// split horizontally
+					_index = Input.mousePosition.x<Screen.width/2 ? 0 : 1;
+					break;
+				case 2:
+					// split vertically
+					_index = Input.mousePosition.y<Screen.height/2 ? 1 : 0;
+					break;
+				case 3:
+					// split into 4 subviews
+					_index = Input.mousePosition.x < Screen.width / 2 ? 0 : 1;
+					_index = Input.mousePosition.y < Screen.height / 2 ? _index + 2 : _index;
+					break;
+				}
+				CurrentCamera = ViewPoints [_index];
+				CurrentCameraType = ViewTypes [_index];
+			}
+			// Rotation
+			if (Input.GetMouseButton(0) && !Input.GetMouseButton(1)) {
+				// to avoid choas, only work when there's exactly one mouse key pressed down
+				// other views should never rotate
+				if (CurrentCameraType != CameraType.MAIN) 
+					return;
+				float _deltaX = Input.mousePosition.x - mouseOrigin.x;
+				float _deltaY = Input.mousePosition.y - mouseOrigin.y;
+				Vector3 _temptOrientation = CurrentCamera.transform.eulerAngles;
+				_temptOrientation.x -= _deltaY * rotationSpeed;
+				_temptOrientation.y += _deltaX * rotationSpeed;
+				CurrentCamera.transform.eulerAngles = _temptOrientation;
+				mouseOrigin = Input.mousePosition;
+			}
+			// Translation
+			if (Input.GetMouseButton(1) && !Input.GetMouseButton(0)) {
+				// basically the same as rotation, note that the follow view should never move around
+				if (CurrentCameraType == CameraType.FOLLOW)
+					return;
+				float _deltaX = (Input.mousePosition.x - mouseOrigin.x) * translationSpeed;
+				float _deltaY = (Input.mousePosition.y - mouseOrigin.y) * translationSpeed;
+				CurrentCamera.transform.Translate (_deltaX, _deltaY, 0, Space.Self);
+				mouseOrigin = Input.mousePosition;
+			}
 		}
-		// Translation
-		if (Input.GetMouseButton(1) && !Input.GetMouseButton(0)) {
-			// basically the same as rotation, note that the follow view should never move around
-			if (CurrentCameraType == CameraType.FOLLOW)
-				return;
-			float _deltaX = (Input.mousePosition.x - mouseOrigin.x) * translationSpeed;
-			float _deltaY = (Input.mousePosition.y - mouseOrigin.y) * translationSpeed;
-			CurrentCamera.transform.Translate (_deltaX, _deltaY, 0, Space.Self);
-			mouseOrigin = Input.mousePosition;
-		}
+
 		// Update the actrual projecting cameras' parameters
 		for (int i = 0; i < 4; i++) {
 			Rect _temptRC = ViewPoints [i].rect;

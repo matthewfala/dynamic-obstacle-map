@@ -1,9 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Linq;
 
 public class ObjectCreator : MonoBehaviour {
+
+	public Button PlayPause;
+	public Slider Progress;
+
+	bool isPlaying;
 
 	int frameCount;
 	int objectCount;
@@ -15,21 +23,30 @@ public class ObjectCreator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+
 		objectCount = 10; // should read from configuration file later on
-		frameCount = 100; // same for this one
+
+		Regex reg = new Regex (@"^[0-9]+\.json$");
+
+		string[] files = Directory.GetFiles (Application.streamingAssetsPath.ToString (), "*");
+
+		for (int i = 0; i < files.Length; i++) {
+			files[i] = Path.GetFileName(files[i]);
+		}
+
+		files = files.Where(path => reg.IsMatch(path)).ToArray();
+
+		frameCount = files.Length; // same for this one
 
 		currentFrameNum = 0;
 		gameDatas = new GameData[frameCount];
 		gameObjects = new GameObject[objectCount];
 
 		for (int i = 0; i < frameCount; i++) {
-			string fileName = string.Format ("{0:D6}.json", i);
-			string filePath = Path.Combine (Application.streamingAssetsPath, fileName);
-			Debug.Log (filePath);
-			if (File.Exists (filePath)) {
-				string dataAsJson = File.ReadAllText (filePath);
-				gameDatas [i] = JsonUtility.FromJson<GameData> (dataAsJson);
-			}
+			string filePath = Path.Combine (Application.streamingAssetsPath, files[i]);
+			string dataAsJson = File.ReadAllText (filePath);
+			gameDatas [i] = JsonUtility.FromJson<GameData> (dataAsJson);
 		}
 
 		foreach (BasicObject obj in gameDatas[currentFrameNum].objects) {
@@ -49,6 +66,11 @@ public class ObjectCreator : MonoBehaviour {
 			gameObjects[obj.id].transform.position = obj.position;
 			gameObjects[obj.id].transform.eulerAngles = obj.orientation;
 		}
+
+
+		isPlaying = false;
+		Progress.maxValue = frameCount - 1;
+
 
 //			objs = loadedData.objects;
 //			for (int i = 0; i < objs.Length; i++) {
@@ -80,11 +102,12 @@ public class ObjectCreator : MonoBehaviour {
 	}
 
 	void Update () {
-		if (currentFrameNum < frameCount) {
-			currentFrameNum++;
-		} else {
-			currentFrameNum = 0;
+
+		if (isPlaying) {
+			Progress.value = (Progress.value + 1) % frameCount;
 		}
+
+		currentFrameNum = (int)Progress.value;
 
 		foreach (BasicObject obj in gameDatas[currentFrameNum].objects) {
 			gameObjects[obj.id].transform.position = obj.position;
@@ -92,5 +115,14 @@ public class ObjectCreator : MonoBehaviour {
 		}
 
 	}
-	
+
+	public void togglePlay () {
+		isPlaying = !isPlaying;
+		if (isPlaying) {
+			PlayPause.GetComponentInChildren<Text> ().text = "Pause";
+		} else {
+			PlayPause.GetComponentInChildren<Text> ().text = "Play";
+		}
+	}
+
 }
