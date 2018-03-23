@@ -16,24 +16,6 @@ from math import sin, cos, acos, sqrt
 #     class if possible. For example look at the Vector Class
 ##################################################################################################################
 class kordermath:
-    # @Brief: Convert from angle in degrees to radians
-    # @Author: Kishore Venkateshan (kishorev@usc.edu)
-    # @Param: degrees  - The angle in degrees
-    # @Return: The new angle measured in radians
-    @classmethod
-    def convert_degrees_to_radians(cls, degrees):
-        return np.deg2rad(degrees)
-
-
-    # @Brief: Convert from angle in radians to degrees
-    # @Author: Kishore Venkateshan (kishorev@usc.edu)
-    # @Param: radians  - The angle in degrees
-    # @Return: The new angle measured in degrees
-    @classmethod
-    def convert_radians_to_degrees(cls, radians):
-        return np.rad2deg(radians)
-
-
     # @Brief: Clamps a value between min and max values
     #         Supported Types: (float, int)
     # @Author: Kishore Venkateshan (kishorev@usc.edu)
@@ -98,14 +80,73 @@ class kordermath:
         return angle
 
 
-    # @Brief: Gives the angle of rotation between two vectors in degress
+    ###########################################################################################
+    # @Brief:
+    # 'angle' respresents the arc length subtended between two unit vectors.
+    # Why angle instead of float?
+    # --- Using float decouples degrees and radians. You could potentially end up passing in 
+    #     a degree to a function that was expecting radians. Or you could convert to degrees
+    #     and forget to change it back to radians which will end up using incorrect values.
+    # --- An angle class could encapsulate a bunch of other angle related math such as wrapping
+    #     angles, normalizing from -pi to pi and so on.
     # @Author: Kishore Venkateshan (kishorev@usc.edu)
-    # @Param: v1 (kordermath.vector)
-    # @Param: v2 (kordermath.vector)
-    # @Return: (double) - angle between in the vectors in degrees
-    @classmethod
-    def angle_between_vectors_in_degrees(cls, v1, v2):
-        return kordermath.convert_radians_to_degrees(kordermath.angle_between_vectors(v1, v2))  
+    ###########################################################################################
+    class angle(object):
+        # @Brief: Convert from angle in degrees to radians
+        # @Author: Kishore Venkateshan (kishorev@usc.edu)
+        # @Param: degrees  - The angle in degrees
+        # @Return: The new angle measured in radians
+        @classmethod
+        def convert_degrees_to_radians(cls, degrees):
+            return np.deg2rad(degrees)
+
+
+        # @Brief: Convert from angle in radians to degrees
+        # @Author: Kishore Venkateshan (kishorev@usc.edu)
+        # @Param: radians  - The angle in degrees
+        # @Return: The new angle measured in degrees
+        @classmethod
+        def convert_radians_to_degrees(cls, radians):
+            return np.rad2deg(radians)
+
+
+        @classmethod
+        def from_degrees(cls, degrees):
+            return kordermath.angle(cls.convert_degrees_to_radians(degrees))
+
+
+        # @Brief: Gives the angle of rotation between two vectors in degress
+        # @Author: Kishore Venkateshan (kishorev@usc.edu)
+        # @Param: v1 (kordermath.vector)
+        # @Param: v2 (kordermath.vector)
+        # @Return: (double) - angle between in the vectors in degrees
+        @classmethod
+        def angle_between_vectors_in_degrees(cls, v1, v2):
+            return cls.convert_radians_to_degrees(kordermath.angle_between_vectors(v1, v2))
+
+
+        def __init__(self, radians):
+            self._radians = radians
+            self._degrees = self.convert_radians_to_degrees(self._radians)
+
+        def __str__(self):
+            return "{:.2f}".format(self.degrees) + " deg"
+
+        @property
+        def radians(self):
+            return self._radians
+        @radians.setter
+        def radians(self, value):
+            self._radians = value
+            self._degrees = self.convert_radians_to_degrees(self._radians)
+
+        @property
+        def degrees(self):
+            return self._degrees
+        @degrees.setter
+        def degrees(self, value):
+            self._degrees = value
+            self._radians = self.convert_degrees_to_radians(self._degrees)
 
 
     ###########################################################################################
@@ -118,7 +159,11 @@ class kordermath:
     # which is the right handed co-ordinate system
     # @Author: Kishore Venkateshan (kishorev@usc.edu)
     ###########################################################################################
-    class vector:
+    class vector(object):
+        @classmethod
+        def zero(cls):
+            return kordermath.vector(0.0, 0.0, 0.0)
+
         @classmethod
         def up(cls):
             return kordermath.vector(0.0, 0.0, 1.0)
@@ -132,10 +177,45 @@ class kordermath:
             return kordermath.vector(0.0, 1.0, 0.0)
 
         def __init__(self, x, y, z):
-            self.npvector = np.array([x, y, z])
-            self.x = self.npvector[0]
-            self.y = self.npvector[1]
-            self.z = self.npvector[2]
+            self.__npvector = np.array([x, y, z])
+            self.__x = self.__npvector[0]
+            self.__y = self.__npvector[1]
+            self.__z = self.__npvector[2]
+
+
+        ######################################################################################
+        # vector properties
+        ######################################################################################
+        @property
+        def x(self):
+            return self.__x
+        @x.setter
+        def x(self, value):
+            self.__x = value
+            self.__npvector[0] = self.__x
+
+        @property
+        def y(self):
+            return self.__y
+        @y.setter
+        def y(self, value):
+            self.__y = value
+            self.__npvector[1] = self.__y
+
+        @property
+        def z(self):
+            return self.__z
+        @z.setter
+        def z(self, value):
+            self.__z = value
+            self.__npvector[2] = self.__z
+
+        @property
+        def npvector(self):
+            self.__npvector = np.array([self.__x, self.__y, self.__z])
+            return self.__npvector
+
+
 
         @classmethod
         def from_npvector(cls, npvector):
@@ -218,7 +298,7 @@ class kordermath:
     # do v * kordermath.quaternion.from_axisangle(a, r)
     # @Author: Kishore Venkateshan (kishorev@usc.edu)
     ################################################################################################################ 
-    class quaternion:
+    class quaternion(object):
         def normalize(self, raise_exception=False):
             length = nla.norm(self.npvector, axis=0)
             if np.isclose(length, 0.0):
@@ -236,12 +316,46 @@ class kordermath:
             return angle, axis
 
         def __init__(self, w, x, y, z):
-            self.npvector = np.array([w, x, y, z])
-            self.w = self.npvector[0]
-            self.x = self.npvector[1]
-            self.y = self.npvector[2]
-            self.z = self.npvector[3]
-            [self.angle, self.axis] = self.get_axisangle()
+            self.__npvector = np.array([w, x, y, z])
+            self.__w = self.__npvector[0]
+            self.__x = self.__npvector[1]
+            self.__y = self.__npvector[2]
+            self.__z = self.__npvector[3]
+            [self.__angle, self.__axis] = self.get_axisangle()
+
+
+        ######################################################################################
+        # quaternion properties
+        ######################################################################################
+        @property
+        def w(self):
+            return self.__w
+
+        @property
+        def x(self):
+            return self.__x
+
+        @property
+        def y(self):
+            return self.__y
+
+        @property
+        def z(self):
+            return self.__z
+        
+        @property
+        def npvector(self):
+            self.__npvector = np.array([self.__w, self.__x, self.__y, self.__z])
+            return self.__npvector
+
+        @property
+        def angle(self):
+            return self.__angle
+
+        @property
+        def axis(self):
+            return self.__axis
+
             
         @classmethod
         def from_npvector(cls, npvector):
@@ -343,7 +457,7 @@ print v // v2
 
 up = kordermath.vector(0, 0, 1)
 
-q = kordermath.quaternion.from_axisangle(up, kordermath.convert_degrees_to_radians(45.0))
+q = kordermath.quaternion.from_axisangle(up, kordermath.angle.convert_degrees_to_radians(45.0))
 
 print q
 
@@ -368,4 +482,5 @@ print r.magnitude()
 
 print kordermath.angle_between_vectors(v, r)
 #END
+
 """
