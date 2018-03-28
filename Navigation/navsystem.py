@@ -19,7 +19,7 @@ class NavSystem:
    #Start the main loop
    isOnline = True
    nextTickTime = time.time()
-   previousTime = nextTickTime 
+   previousTime = nextTickTime
     
    while isOnline:
     

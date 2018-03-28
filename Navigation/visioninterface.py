@@ -280,8 +280,6 @@ class ShadowObj:
 
     # weighted radius sums by hit
     sum_r_err = 0
-    sum_r_weight = 0
-
     error_radius = 0
     actual_radius = 0
 
@@ -326,51 +324,21 @@ class ShadowObj:
             dist_between = np.linalg.norm(self.get_position() - l.get_position())
             if (self.get_radius() + l.get_radius()) < dist_between:
 
-
-            # check who has more priviledge
-
-            # self has more privledge
-            if self.get_sum_found() > l.get_sum_found():
-                # update only if the radius is smaller
-                if self.get_radius() < l.get_radius():
-                    # merge position
+                # merge only if radius is smaller
+                # check who has more priviledge
+                if (self.get_sum_found() > l.get_sum_found()):
                     m_pos = l.get_position()
-                    self.x += m_pos.item(0)
-                    self.y += m_pos.item(1)
-                    self.z += m_pos.item(2)
-                    self.sum_weight += l.get_sum_weight()
-                    self.sum_found += l.get_sum_found()
-                    self.refresh_position()
+                    mx = m_pos(0)
+                    my = m_pos(1)
+                    mz = m_pos(2)
 
-                    # merge radius
-                    self.sum_r_err += l.sum_r_err
-                    self.sum_r_weight += l.sum_r_weight
-                    self.refresh_radius()
 
-                # delete l
-                list.remove(l)
 
-            # l has more privledge
-            elif l.get_sum_found() > self.get_sum_found():
-                # update only if the radius is smaller
-                if l.get_radius() < self.get_radius():
-                    # merge position
-                    m_pos = self.get_position()
-                    l.x += m_pos.item(0)
-                    l.y += m_pos.item(1)
-                    l.z += m_pos.item(2)
-                    l.sum_weight += self.get_sum_weight()
-                    l.sum_found += self.get_sum_found()
-                    l.refresh_position()
 
-                    # merge radius
-                    l.sum_r_err += self.sum_r_err
-                    l.sum_r_weight += self.sum_r_weight
-                    l.refresh_radius()
 
-                list.remove(self)
 
-            break
+
+
 
 
     def get_position(self):
@@ -384,9 +352,6 @@ class ShadowObj:
 
     def get_sum_found(self):
         return self.sum_found
-
-    def get_sum_weight(self):
-        return self.sum_weight
 
     def update(self, position, robot_position):
         distance = np.linalg.norm(position - robot_position)
@@ -411,10 +376,6 @@ class ShadowObj:
         self.position = np.array([self.sum_x/self.sum_weight, self.sum_y/self.sum_weight, self.sum_z/self.sum_weight])
         self.sum_found += weight
 
-    def refresh_position(self):
-        self.position = np.array([self.sum_x / self.sum_weight, self.sum_y / self.sum_weight, self.sum_z / self.sum_weight])
-
-
     def update_missing(self, robot_position):
         dist = np.linalg.norm(self.get_position()-robot_position)
         self.sum_found += self.dist_weight(dist)
@@ -423,14 +384,10 @@ class ShadowObj:
     def update_radius(self, distance):
         # use standard dist_weight as weight
         weight = self.dist_weight(distance)
-        self.sum_r_weight += weight
         # increment radius
         self.sum_r_err += self.get_radius_error(distance) * weight
         # update error_radius
-        self.error_radius = self.sum_r_err/self.sum_r_weight
-
-    def refresh_radius(self):
-        self.error_radius = self.sum_r_err / self.sum_r_weight
+        self.error_radius = self.sum_r_err/weight
 
     def dist_weight(self, dist):
         return dist * pow((RANGE_MAX/dist), EXP_WEIGHT)
