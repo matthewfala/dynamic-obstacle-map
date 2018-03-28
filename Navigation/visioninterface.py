@@ -1,5 +1,8 @@
 import numpy as np
 import math
+import random
+import time
+#from msvcrt import getch # for keyboard controls
 
 # Constants
 
@@ -67,8 +70,9 @@ def euler_vector_rotate(v, alpha, beta, gamma):
     #return fully rotated array
     return v_gamma
 
+
 # camera direction is in relation to the world
-def update_actors(camera_direction, robot_position, actor_list, shadow_list, detected_list):
+def update_actors(world, camera_direction, robot_position, actor_list, shadow_list, detected_list):
 
     # Find all objects in shadow_list that should be updated
     in_view = [] # contains shadow object, and angle range
@@ -137,6 +141,7 @@ def update_actors(camera_direction, robot_position, actor_list, shadow_list, det
     unpaired_digitals = []
     for i in range(0, len(in_view) - 1):
         unpaired_digitals[i] = in_view[i]
+
     unpaired_physicals = []
     for i in range(0, len(in_view) - 1):
         unpaired_physicals[i] = detected_list[i]
@@ -146,6 +151,7 @@ def update_actors(camera_direction, robot_position, actor_list, shadow_list, det
     # permute
     for si in range(0, len(in_view)-1):
         for di in range(si + 1, len(detected_list)):
+
             # get the radius to each object ( should only find one pair )
             # radius must not overlap
             r = np.linalg.norm(in_view[si].get_position(), detected_list[di].get_position())
@@ -163,10 +169,12 @@ def update_actors(camera_direction, robot_position, actor_list, shadow_list, det
 
     # check physicals
     for p in pairs:
+
         identical_digitals = 0
         for c in pairs:
             if p.digital == c.digital:
                 identical_digitals += 1
+
         if identical_digitals != 1:
             print "1 to 1 radius pairing broken (multiple digitals), "
             print str(identical_digitals) + " identical digitals exist for obj: " + str(id(p))
@@ -174,10 +182,12 @@ def update_actors(camera_direction, robot_position, actor_list, shadow_list, det
 
     # check physicals
     for p in pairs:
+
         identical_physicals = 0
         for c in pairs:
             if p.physical == c.physical:
                 identical_physicals += 1
+
         if identical_physicals != 1:
             print "1 to 1 radius pairing broken (multiple physicals), "
             print str(identical_physicals) + " identical physicals exist for obj: " + str(id(p))
@@ -190,6 +200,7 @@ def update_actors(camera_direction, robot_position, actor_list, shadow_list, det
         for c in pairs:
             if p.physical == c.digital:
                 identical += 1
+
         if identical != 1:
             print "1 to 1 radius pairing broken(permutation), "
             print str(identical) + " identical exist for obj: " + str(id(p))
@@ -211,44 +222,36 @@ def update_actors(camera_direction, robot_position, actor_list, shadow_list, det
     #    if not found:
     #        missing.append(v)
 
-    # update unpaired objects as missing
+    # update unpaired as missing
     for m in unpaired_digitals:
         m.update_missing(robot_position)
 
-    # update the rest at their current locations
+    # update paired
     for p in pairs:
-        # Update (may not update position if too close or far
+        # update and re-merge
         p.digital.update(p.physical.get_position(), robot_position)
+        p.merge_in(actor_list, shadow_list)
 
-    # create objects not paired (can edit shadow_list in function)
+    # create objects not paired
     for n in unpaired_physicals:
-        # create the new object and add it to the list
-        new_shadow_obj = ShadowObj(n.get_actor_type, n.position, robot_position)
-        shadow_list.append(new_shadow_obj)
-        # check if any overlaps exist and remove
-        new_shadow_obj.merge_in(shadow_list)
 
+        # check if in range
+        dist = np.linalg.norm(n - robot_position)
+        if RANGE_MIN < dist < RANGE_MAX:
 
+            # create and add to list
+            new_shadow_obj = ShadowObj(n.get_actor_type, n.position, robot_position)
+            shadow_list.append(new_shadow_obj)
 
+            # merge overlaps
+            new_shadow_obj.merge_in(actor_list, shadow_list)
 
-
-
-# for d in detected_list:
-        # Add if within min-view dist
-   #     d_radius = VIEW_ERR * d.view_dist + MIN_VIEW_DIST_BUF
-
-
-    #    if d.dist <
-
-
-   # for a in in_view:
-
+    # toggle everything in_view
+    for s in in_view:
+        s.toggle_mirrored(world, actor_list, detected_list)
 
 def in_camera_view(camra_dir, object_dir):
     return True
-
-
-
 
 
 class ActorSetting:
@@ -262,6 +265,9 @@ ActorSettings = [ActorSetting('buoy', .3)]
 
 
 class ShadowObj:
+
+    # probability of existance
+    probability = 1
 
     # number of times obj should be in view
     probed = 0
@@ -286,6 +292,7 @@ class ShadowObj:
     actual_radius = 0
 
     mirrored = False
+    mirror_actor = None
 
     def __init__(self, actor_type, position, robot_position):
 
@@ -305,7 +312,7 @@ class ShadowObj:
 
         # update radius
         self.actual_radius = self.type_settings.actual_radius
-        self.update_radius(distance, weight)
+        self.update_radius(distance)
 
         # min_view_dist and radius
         self.min_view_distance = distance
@@ -320,58 +327,64 @@ class ShadowObj:
     # If the object is known to be viewed, probe
     #def probe(self, detected_pos, view_distance):
 
-    def merge_in(self, list):
-        for l in list:
+    def merge_in(self, actor_list, shadow_list):
+        for l in shadow_list:
             # check for overlaps
             dist_between = np.linalg.norm(self.get_position() - l.get_position())
             if (self.get_radius() + l.get_radius()) < dist_between:
 
 
-            # check who has more priviledge
+                # check who has more priviledge
 
-            # self has more privledge
-            if self.get_sum_found() > l.get_sum_found():
-                # update only if the radius is smaller
-                if self.get_radius() < l.get_radius():
-                    # merge position
-                    m_pos = l.get_position()
-                    self.x += m_pos.item(0)
-                    self.y += m_pos.item(1)
-                    self.z += m_pos.item(2)
-                    self.sum_weight += l.get_sum_weight()
-                    self.sum_found += l.get_sum_found()
-                    self.refresh_position()
+                # self has more privledge
+                if self.get_sum_found() > l.get_sum_found():
+                    # update only if the radius is smaller
+                    if self.get_radius() < l.get_radius():
+                        # merge position
+                        m_pos = l.get_position()
+                        self.sum_x += m_pos.item(0)
+                        self.sum_y += m_pos.item(1)
+                        self.sum_z += m_pos.item(2)
+                        self.sum_weight += l.get_sum_weight()
+                        self.sum_found += l.get_sum_found()
+                        self.refresh_position()
 
-                    # merge radius
-                    self.sum_r_err += l.sum_r_err
-                    self.sum_r_weight += l.sum_r_weight
-                    self.refresh_radius()
+                        # merge radius
+                        self.sum_r_err += l.sum_r_err
+                        self.sum_r_weight += l.sum_r_weight
+                        self.refresh_radius()
 
-                # delete l
-                list.remove(l)
+                    # delete l  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WILL CAUSE PROBLEMS FOR UPDATING WORLD
+                    l.safe_remove(actor_list, shadow_list)
 
-            # l has more privledge
-            elif l.get_sum_found() > self.get_sum_found():
-                # update only if the radius is smaller
-                if l.get_radius() < self.get_radius():
-                    # merge position
-                    m_pos = self.get_position()
-                    l.x += m_pos.item(0)
-                    l.y += m_pos.item(1)
-                    l.z += m_pos.item(2)
-                    l.sum_weight += self.get_sum_weight()
-                    l.sum_found += self.get_sum_found()
-                    l.refresh_position()
+                    # call merge_in on new merged obj (incase overlapping new obj)
+                    self.merge_in(actor_list, shadow_list)
 
-                    # merge radius
-                    l.sum_r_err += self.sum_r_err
-                    l.sum_r_weight += self.sum_r_weight
-                    l.refresh_radius()
+                # l has more privledge
+                elif l.get_sum_found() > self.get_sum_found():
+                    # update only if the radius is smaller
+                    if l.get_radius() < self.get_radius():
+                        # merge position
+                        m_pos = self.get_position()
+                        l.x += m_pos.item(0)
+                        l.y += m_pos.item(1)
+                        l.z += m_pos.item(2)
+                        l.sum_weight += self.get_sum_weight()
+                        l.sum_found += self.get_sum_found()
+                        l.refresh_position()
 
-                list.remove(self)
+                        # merge radius
+                        l.sum_r_err += self.sum_r_err
+                        l.sum_r_weight += self.sum_r_weight
+                        l.refresh_radius()
 
-            break
+                    # delete self # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WILL CAUSE PROBLEMS FOR UPDATING
+                    self.safe_remove(actor_list, shadow_list)
 
+                    # call merge_in on l
+                    l.merge_in(actor_list, shadow_list)
+
+                break
 
     def get_position(self):
         return self.position
@@ -390,11 +403,20 @@ class ShadowObj:
 
     def update(self, position, robot_position):
         distance = np.linalg.norm(position - robot_position)
-        self.update_position(position, robot_position)
 
         # update if the new radius is smaller or within min_view_dist_buf
         if self.get_radius_error(distance - MIN_VIEW_DIST_BUF) < self.get_radius():
+            self.update_position(position, robot_position)
             self.update_radius(distance)
+            # update probability
+            self.probability = self.sum_weight/self.sum_found
+            self.probed += 1
+
+    def update_missing(self, robot_position):
+        dist = np.linalg.norm(self.get_position()-robot_position)
+        self.sum_found += self.dist_weight(dist)
+        self.probability = self.sum_weight / self.sum_found
+        self.probed += 1
 
     def update_position(self, position, robot_position):
 
@@ -413,11 +435,7 @@ class ShadowObj:
 
     def refresh_position(self):
         self.position = np.array([self.sum_x / self.sum_weight, self.sum_y / self.sum_weight, self.sum_z / self.sum_weight])
-
-
-    def update_missing(self, robot_position):
-        dist = np.linalg.norm(self.get_position()-robot_position)
-        self.sum_found += self.dist_weight(dist)
+        self.probability = self.sum_weight / self.sum_found
 
     # provide distance and weight, and it will adjust radius
     def update_radius(self, distance):
@@ -431,6 +449,7 @@ class ShadowObj:
 
     def refresh_radius(self):
         self.error_radius = self.sum_r_err / self.sum_r_weight
+        self.probability = self.sum_weight / self.sum_found
 
     def dist_weight(self, dist):
         return dist * pow((RANGE_MAX/dist), EXP_WEIGHT)
@@ -441,6 +460,34 @@ class ShadowObj:
 
     def get_radius_error(self, dist):
         return VIEW_ERR * dist
+
+    def toggle_mirrored(self, world, _world_list, _shadow_list):
+        if self.probed >= ACTIVATE_VIEWS:
+
+            if self.mirrored:
+                if REMOVE_PROBABILITY < self.probability:
+                    self.mirror_actor.update_position(self.position)
+                elif DESTROY_RECORD_PROBABILITY < self.probability <= REMOVE_PROBABILITY:
+                    # stop mirroring and remove from world
+                    self.mirrored = False
+                    if self in _world_list: _world_list.remove(self.mirror_actor) # POSSIBLY USE SAFER REMOVAL METHOD
+                    self.mirror_actor = None
+                elif self.probability <= DESTROY_RECORD_PROBABILITY:
+                    self.mirrored = False
+                    self.safe_remove(_world_list, _shadow_list)
+                    self.mirror_actor = None
+
+            else:
+                if CREATE_PROBABILITY < self.probability:
+                    self.mirror_actor = world.create_actor(self.actor_type, self.get_position())
+                    self.mirrored = True
+                elif self.probability <= DESTROY_RECORD_PROBABILITY:
+                    self.safe_remove(_world_list, _shadow_list)
+
+    def safe_remove(self, _world_list, _shadow_list):
+        if self in _world_list:_world_list.remove(self.mirror_actor)
+        if self in _shadow_list: _shadow_list.remove(self)
+        # remove from real world list! (maybe r.deleteActor(self)
 
     #def toggle_radius(self):
     #    if self.actual_radius > self.error_radius:
@@ -459,7 +506,87 @@ world_list.append(ShadowObj("buoy", np.array([2, 2, 0]), 6))
 world_list.append(ShadowObj("buoy", np.array([10, 2, 3]), 10))
 
 
-update_actors(np.array([2, 1, 0]), np.array([2.7, 0, 0]), world_list, world_list, [])
+#update_actors(np.array([2, 1, 0]), np.array([2.7, 0, 0]), world_list, world_list, [])
+
+fake_coords = []
+fake_coords.append(["buoy", np.array([5, 2, 3])])
+fake_coords.append(["buoy", np.array([1, 2, 2])])
+fake_coords.append(["buoy", np.array([6, 3, 1])])
+fake_coords.append(["buoy", np.array([2, 5, 0])])
+fake_coords.append(["buoy", np.array([2, 3, 1])])
+fake_coords.append(["buoy", np.array([0, 1, 2])])
+
+fake_error_per_dist = 1
+
+def get_detected_list(robot_pos, fake_coords):
+    detected_list = []
+    for f in fake_coords:
+        dist = np.linalg.norm(robot_pos-f[1])
+        err = fake_error_per_dist * dist
+        x = random.gauss(f[1].item(0), err)
+        y = random.gauss(f[1].item(1), err)
+        z = random.gauss(f[1].item(2), err)
+
+        fake_pos = np.array([x, y, z])
+
+        detected_list.append(DetectedObject(f[0], fake_pos))
+    return detected_list
+
+
+class DetectedObject():
+    def __init__(self, _actor_type, _position):
+        self.actor_type = _actor_type
+        self.position = _position
+
+    def get_actor_type(self):
+        return self.actor_type
+
+    def get_position(self):
+        return self.position
+
+
+class DumbWorld:
+    def __init__(self, my_actor_list):
+        self.actor_list = my_actor_list
+
+    def create_actor(self, actorType, position):
+        new_actor = DumbActor(actorType, position)
+        self.actor_list.append(new_actor)
+        return new_actor
+
+class DumbActor:
+    def __init__(self, actor_type, position):
+        self.actorType = actor_type
+        self.position = position
+
+robot_position = np.array([0, 0, 0])
+camera_direction = np.array([0, 0, 0])
+actor_list = []
+my_shadow_list = []
+
+world = DumbWorld(actor_list)
+# run simulation
+while True:
+    detected_list = get_detected_list(robot_position, fake_coords)
+    update_actors(world, camera_direction, robot_position, actor_list, my_shadow_list, detected_list)
+    time.sleep(.5)
+    print "~~Robot~~Position~~~~~~~~~~~~~~" + str(robot_position.item(0)) + ", " + str(robot_position.item(1)) + ", " + str(robot_position.item(2)) + " ~~~~"
+
+    print "~~ShadowList~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    for s in my_shadow_list:
+        print str(id(s)) + " -- Actor type: " + s.actor_type + " -- At: " + str(s.get_position().item(0)) + ", " + str(s.get_position().item(1)) + ", " + str(s.get_position().item(2))
+
+    print "~~ActorList~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    for s in actor_list:
+        print str(id(s)) + " -- Actor type: " + s.actor_type + " -- At: " + str(s.get_position().item(0)) + ", " + str(s.get_position().item(1)) + ", " + str(s.get_position().item(2))
+
+    # fake movement
+    #if key == 80:  # Down arrow
+    #    robot_position = np.subtract(robot_position + np.array[0,-.3,0])
+
+    #elif key == 72:  # Up arrow
+    #    robot_position = np.subtract(robot_position + np.array[0, .3, 0])
+
 
 
 

@@ -1,6 +1,10 @@
 import testmod
 import numpy as np
 import math
+import time
+from msvcrt import getch # for keyboard controls
+
+
 
 class myanimal:
     name = "dog"
@@ -101,3 +105,9 @@ def removeAloha(b):
 
 removeAloha(a)
 print a
+
+while True:
+    key = ord(getch())
+    print key
+    time.sleep(.5)
+

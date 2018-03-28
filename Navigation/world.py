@@ -22,13 +22,20 @@ class World:
     # There could be multiple buoys and bins.
     def create_actor(self, actorType, position):
         if actorType == 0:
-            self.actorList.append(Actor(position))
+            new_actor = Actor(position)
+            self.actorList.append(new_actor)
+            return new_actor
         elif actorType == 1:
-            self.actorList.append(Buoy(position))
+            new_actor = Buoy(position)
+            self.actorList.append(new_actor)
+            return new_actor
         elif actorType == 2:
-            self.actorList.append(Bin(position))
+            new_actor = Bin(position)
+            self.actorList.append(new_actor)
+            return new_actor
         else:
             print "Invalid actor type."
+
 
     # Deletes actor from world
     def delete_actor(self, actor):
@@ -40,13 +47,16 @@ class World:
             print '-', a.name, a.position
 
 
-
 class Actor:
     'Base class for all actors.'
     name = "Obstacle"
 
     def __init__(self, position):
         self.position = position # position of actor in the world
+
+    # Updates actor position
+    def update_position(self, new_position):
+        self.position = new_position
 
 class Robot(Actor):
     'Robot class for our robot.'
