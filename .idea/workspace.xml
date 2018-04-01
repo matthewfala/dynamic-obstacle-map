@@ -4,8 +4,6 @@
     <list default="true" id="844f47cf-9d9f-4301-864f-fb69377797df" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Navigation/visioninterface.py" afterPath="$PROJECT_DIR$/Navigation/visioninterface.py" />
-      <change beforePath="$PROJECT_DIR$/Navigation/world.py" afterPath="$PROJECT_DIR$/Navigation/world.py" />
-      <change beforePath="$PROJECT_DIR$/scratchpad.py" afterPath="$PROJECT_DIR$/scratchpad.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +17,7 @@
       <file leaf-file-name="pathplanning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Navigation/pathplanning.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1219">
+            <state relative-caret-position="1024">
               <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
@@ -39,11 +37,10 @@
       <file leaf-file-name="visioninterface.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Navigation/visioninterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="582" column="19" lean-forward="true" selection-start-line="582" selection-start-column="19" selection-end-line="582" selection-end-column="19" />
+            <state relative-caret-position="551">
+              <caret line="436" column="24" lean-forward="true" selection-start-line="436" selection-start-column="24" selection-end-line="436" selection-end-column="24" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
               </folding>
             </state>
           </provider>
@@ -62,11 +59,9 @@
       <file leaf-file-name="scratchpad.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scratchpad.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-26">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="33">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,27 +87,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>norm</find>
+      <find>update_position</find>
+      <find>m_pos.item</find>
+      <find>DISTANCE TO</find>
       <find>print</find>
-      <find>settings</find>
-      <find>self.sum_r</find>
-      <find>sum_err_r</find>
-      <find>sum_r</find>
-      <find>get_rad</find>
-      <find>.position</find>
-      <find>list</find>
-      <find>sum_weight =</find>
-      <find>sum_weight +</find>
-      <find>sum_found +</find>
-      <find>world_list</find>
-      <find>actor_list</find>
-      <find>detected</find>
-      <find>physical</find>
-      <find>get_actor</find>
-      <find>remove</find>
+      <find>overlap</find>
+      <find>overlap&quot;</find>
+      <find>distance</find>
+      <find>weight +=</find>
+      <find>probed</find>
+      <find>sum_weight</find>
+      <find>sum_found</find>
+      <find>for</find>
+      <find>sum_x</find>
+      <find>print</find>
+      <find>Safely Removed: id: 151563800</find>
+      <find>151563800</find>
+      <find>Safely</find>
+      <find>Creating</find>
+      <find>get_actor_type</find>
+      <find>get_position</find>
+      <find>merge_in</find>
+      <find>Safely Removed</find>
+      <find>distance_between</find>
+      <find>safe_remove</find>
+      <find>merge</find>
+      <find>==</find>
+      <find>is</find>
+      <find>is</find>
+      <find>probability</find>
+      <find>missing</find>
     </findStrings>
     <replaceStrings>
       <replace />
+      <replace>#printToggleOff</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -143,9 +151,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1531" />
-    <option name="y" value="-2187" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="11" />
+    <option name="y" value="11" />
     <option name="width" value="3200" />
     <option name="height" value="1720" />
   </component>
@@ -202,10 +210,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Navigation/kordermath.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Navigation/navsystem.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scenes/Main.unity</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/SplitScreenController.cs</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -213,226 +217,9 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Navigation/pathplanner.py</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/AUV.prefab</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/AUV.prefab.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/Capsule.prefab</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/Capsule.prefab.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/Cylinder.prefab</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/Cylinder.prefab.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/Sphere.prefab</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Prefabs/Sphere.prefab.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/BasicObject.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/BasicObject.cs.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/GameData.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/GameData.cs.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/ObjectCreator.cs</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Scripts/ObjectCreator.cs.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000000.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000000.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000001.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000001.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000002.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000002.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000003.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000003.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000004.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000004.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000005.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000005.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000006.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000006.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000007.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000007.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000008.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000008.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000009.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000009.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000010.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000010.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000011.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000011.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000012.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000012.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000013.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000013.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000014.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000014.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000015.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000015.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000016.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000016.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000017.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000017.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000018.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000018.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000019.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000019.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000020.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000020.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000021.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000021.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000022.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000022.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000023.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000023.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000024.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000024.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000025.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000025.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000026.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000026.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000027.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000027.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000028.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000028.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000029.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000029.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000030.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000030.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000031.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000031.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000032.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000032.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000033.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000033.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000034.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000034.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000035.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000035.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000036.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000036.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000037.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000037.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000038.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000038.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000039.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000039.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000040.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000040.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000041.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000041.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000042.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000042.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000043.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000043.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000044.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000044.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000045.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000045.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000046.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000046.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000047.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000047.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000048.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000048.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000049.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000049.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000050.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000050.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000051.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000051.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000052.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000052.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000053.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000053.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000054.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000054.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000055.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000055.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000056.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000056.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000057.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000057.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000058.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000058.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000059.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000059.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000060.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000060.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000061.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000061.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000062.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000062.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000063.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000063.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000064.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000064.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000065.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000065.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000066.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000066.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000067.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000067.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000068.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000068.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000069.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000069.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000070.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000070.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000071.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000071.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000072.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000072.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000073.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000073.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000074.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000074.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000075.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000075.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000076.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000076.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000077.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000077.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000078.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000078.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000079.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000079.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000080.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000080.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000081.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000081.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000082.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000082.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000083.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000083.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000084.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000084.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000085.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000085.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000086.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000086.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000087.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000087.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000088.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000088.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000089.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000089.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000090.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000090.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000091.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000091.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000092.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000092.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000093.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000093.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000094.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000094.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000095.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000095.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000096.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000096.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000097.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000097.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000098.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000098.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000099.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000099.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/sample.json</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/StreamingAssets/sample.json.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/helper/mock_stream_gen.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Navigation/network/client.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Navigation/network/getchar.py</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Navigation/network/server.py</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -440,10 +227,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Materials/AUV Material.mat</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/Materials/AUV Material.mat.meta</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/New Terrain.asset</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Visualization/Assets/New Terrain.asset.meta</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -662,20 +445,27 @@
       <option name="project" value="LOCAL" />
       <updated>1522214472741</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Finished Everything&#10;Now for the testing ;)">
+      <created>1522227652301</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1522227652301</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1461" y="-2173" width="3866" height="2106" extended-state="6" />
+    <frame x="11" y="11" width="3200" height="1720" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.106770836" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12917455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.235045" sideWeight="0.31770834" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1310712" sideWeight="0.20415878" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26786658" sideWeight="0.49375" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.235045" sideWeight="0.6822917" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1310712" sideWeight="0.7958412" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -692,19 +482,19 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25441465" sideWeight="0.5053125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29540917" sideWeight="0.20226844" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25441465" sideWeight="0.4946875" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26786658" sideWeight="0.49375" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23543261" sideWeight="0.685" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29540917" sideWeight="0.7977316" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.106875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12917455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.02488089" sideWeight="0.49895832" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -729,7 +519,8 @@
     <MESSAGE value="Finished populating in_view list, dismissing objects behind any object in front." />
     <MESSAGE value="Finished dismissing all hidden objects&#10;Finished object updater&#10;Started merge function" />
     <MESSAGE value="Finished the merge objects function&#10;Begin to to test the update function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the merge objects function&#10;Begin to to test the update function" />
+    <MESSAGE value="Finished Everything&#10;Now for the testing ;)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Everything&#10;Now for the testing ;)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -744,7 +535,6 @@
           <caret line="242" column="49" lean-forward="false" selection-start-line="242" selection-start-column="49" selection-end-line="242" selection-end-column="49" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -774,7 +564,7 @@
         <state relative-caret-position="3003">
           <caret line="93" column="18" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -793,7 +583,6 @@
           <caret line="242" column="49" lean-forward="true" selection-start-line="242" selection-start-column="49" selection-end-line="242" selection-end-column="49" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -823,7 +612,7 @@
         <state relative-caret-position="3003">
           <caret line="93" column="18" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -842,7 +631,6 @@
           <caret line="245" column="20" lean-forward="false" selection-start-line="245" selection-start-column="20" selection-end-line="245" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -873,7 +661,6 @@
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="61" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -891,7 +678,7 @@
         <state relative-caret-position="3003">
           <caret line="93" column="18" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -922,7 +709,6 @@
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="61" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -940,7 +726,7 @@
         <state relative-caret-position="3003">
           <caret line="93" column="18" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -971,7 +757,6 @@
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="61" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -989,7 +774,7 @@
         <state relative-caret-position="3003">
           <caret line="93" column="18" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1020,7 +805,6 @@
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="61" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1038,7 +822,7 @@
         <state relative-caret-position="3003">
           <caret line="93" column="18" lean-forward="false" selection-start-line="93" selection-start-column="18" selection-end-line="93" selection-end-column="18" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1077,7 +861,6 @@
           <caret line="153" column="0" lean-forward="false" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1116,7 +899,6 @@
           <caret line="153" column="0" lean-forward="true" selection-start-line="153" selection-start-column="0" selection-end-line="153" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1133,6 +915,22 @@
           <folding>
             <element signature="e#0#11#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testmod.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scratchpad.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,37 +952,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Navigation/pathplanning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
+        <state relative-caret-position="1024">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scratchpad.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testmod.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Navigation/visioninterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="582" column="19" lean-forward="true" selection-start-line="582" selection-start-column="19" selection-end-line="582" selection-end-column="19" />
+        <state relative-caret-position="551">
+          <caret line="436" column="24" lean-forward="true" selection-start-line="436" selection-start-column="24" selection-end-line="436" selection-end-column="24" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <marker date="1522227532994" expanded="true" signature="8011:8337" ph="..." />
           </folding>
         </state>
       </provider>
