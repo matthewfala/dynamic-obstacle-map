@@ -19,12 +19,12 @@ RANGE_MIN = 1
 RANGE_MAX = 20
 
 # View ACTIVATE_VIEWS times before activating obj
-ACTIVATE_VIEWS = 100
+ACTIVATE_VIEWS = 10
 
 # Probabilities
 CREATE_PROBABILITY = .5
 REMOVE_PROBABILITY = .2
-DESTROY_RECORD_PROBABILITY = .05
+DESTROY_RECORD_PROBABILITY = .1
 
 # Create Shadow World
 shadow_list = []
@@ -98,7 +98,7 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 angle_ranges.append([dir_vec, delta_theta])
 
 
-    # Dismiss shadow objects behind other shadow objects
+    # Dismiss shadow objects behind other shadow objects  ----------------- Front OBJECT MUST BE ACTOR LIST
     # Check for angle overlaps ( Permute ) - Tested
     dismiss_list = []
     for v1i in range(0, len(in_view)-1):
@@ -121,10 +121,10 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 print "Error: cos_angle_between is greater than 1: " + str(cos_angle_between)
                 print "I'll set it to 1"
                 cos_angle_between = 1
-            elif cos_angle_between < 0:
-                print "Error: cos_angle_between is less than 0: " + + str(cos_angle_between)
-                print "I'll set it to 0"
-                cos_angle_between = 0
+            elif cos_angle_between < -1:
+                print "Error: cos_angle_between is less than -1: " + str(cos_angle_between)
+                print "I'll set it to -1"
+                cos_angle_between = -1
             # get angle
             angle_between = math.acos(cos_angle_between)
 
@@ -142,9 +142,9 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                         dismiss_list.append(in_view[v2i])
 
     # remove dismiss list from view
-    print "Removing from view: "
+    #print "Removing from view: "
     for r in dismiss_list:
-        print "Removing -- Id: " + str(id(r)) + ", Object type: " + str(r.actor_type) + ", Position: " + str(r.get_position())
+        # print "Removing -- Id: " + str(id(r)) + ", Object type: " + str(r.actor_type) + ", Position: " + str(r.get_position())
         in_view.remove(r)
 
     # in_view, then detected_list
@@ -152,7 +152,7 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
     # deep copy digitals and physicals (not too deep)
     unpaired_digitals = []
-    for i in range(0, len(in_view) - 1):
+    for i in range(0, len(in_view)):
         unpaired_digitals.append(in_view[i])
 
     unpaired_physicals = []
@@ -161,20 +161,26 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
     # Pair Objects
 
-    # permute
-    for si in range(0, len(in_view)-1):
-        for di in range(si + 1, len(detected_list)):
+    # Check all combinations of 2
+    for si in range(0, len(in_view)):
+        for di in range(0, len(detected_list)):
 
             # get the radius to each object ( should only find one pair )
             # radius must not overlap
-            distance_between = np.linalg.norm(in_view[si].get_position() - detected_list[di].get_position())
-            if distance_between < in_view[si].get_radius():
+            #print "Trying to pair: In view at " + str(in_view[si].get_position()) + " with detected at " + str(detected_list[di].get_position())
+            distance_to_detected = np.linalg.norm(in_view[si].get_position() - detected_list[di].get_position())
+            #print "id: " + str(id(detected_list[di])) + ", Distance to: " + str(distance_to_detected) + ", Radius : " + str(in_view[si].get_radius())
+            if distance_to_detected < in_view[si].get_radius():
+                print "PAIRING: In view at " + str(in_view[si].get_position()) + " with detected at " + str(detected_list[di].get_position())
                 pair = Pair(in_view[si], detected_list[di])
                 pairs.append(pair)
 
                 # remove from unpaired lists
                 unpaired_digitals.remove(pair.digital)
                 unpaired_physicals.remove(pair.physical)
+
+                # move onto next shadow(digital) object
+                break
 
     # Verify 1 to 1 paring (REMOVE IN FINAL VERSION)
 
@@ -208,20 +214,21 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
     # permute should take care of multiple pairs
     # check mix
-    for p in pairs:
-        identical = 0
-        for c in pairs:
-            if p.physical is c.digital:
-                identical += 1
 
-        if identical != 1:
-            print "1 to 1 radius pairing broken(permutation), "
-            print str(identical) + " identical exist for obj: " + str(id(p))
-            error_flag = 1
-
-    # exit if errors occur
-    if error_flag:
-        return 1
+    # for p in pairs:
+    #     identical = 0
+    #     for c in pairs:
+    #         if p.physical is c.digital:
+    #             identical += 1
+    #
+    #     if identical != 1:
+    #         print "1 to 1 radius pairing broken(permutation), "
+    #         print str(identical) + " identical exist for obj: " + str(id(p))
+    #         error_flag = 1
+    #
+    # # exit if errors occur
+    # if error_flag:
+    #     return 1
 
     # now each pairs are definitely 1 to 1
 
@@ -261,7 +268,9 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
     # toggle everything in_view
     for s in in_view:
-        s.toggle_mirrored(world, actor_list, detected_list)
+        print "ID in toggle updater: " + str(id(s))
+        print str(s in shadow_list)
+        s.toggle_mirrored(world, actor_list, shadow_list) #detected_list)
 
 def in_camera_view(camra_dir, object_dir):
     return True
@@ -320,15 +329,11 @@ class ShadowObj:
         # give weight to find
         distance = np.linalg.norm(position-robot_position)
         #print "DISTANCE TO OBJECT: " + str(distance)
-        weight = self.dist_weight(distance)
-        self.sum_weight += weight
-        self.sum_found += weight
 
-        # update position
+        # update position (increments sum_weight and sum_found)
         self.update_position(position, robot_position)
 
         # update radius
-        #self.actual_radius = self.type_settings.actual_radius
         self.update_radius(distance)
 
         # min_view_dist and radius
@@ -345,6 +350,7 @@ class ShadowObj:
     #def probe(self, detected_pos, view_distance):
 
     def merge_in(self, actor_list, shadow_list):
+        print "Merge Called"
         for l in shadow_list:
             if l is not self:
                 # check for overlaps
@@ -486,7 +492,9 @@ class ShadowObj:
         return VIEW_ERR * dist
 
     def toggle_mirrored(self, world, _world_list, _shadow_list):
+        print str(id(self)) + " Made it inside toggle_mirrored"
         if self.probed >= ACTIVATE_VIEWS:
+            print str(id(self)) + " Made it inside toggle_mirrored Actions"
 
             if self.mirrored:
                 if REMOVE_PROBABILITY < self.probability:
@@ -498,19 +506,29 @@ class ShadowObj:
                     self.mirror_actor = None
                 elif self.probability <= DESTROY_RECORD_PROBABILITY:
                     self.mirrored = False
+                    #print "Shadow List id: " + str(_)
+                    print "Toggle~~Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
                     self.safe_remove(_world_list, _shadow_list)
                     self.mirror_actor = None
 
             else:
                 if CREATE_PROBABILITY < self.probability:
                     self.mirror_actor = world.create_actor(self.actor_type, self.get_position())
+                    print "Setting Mirrored Actor"
+                    print self.mirror_actor
                     self.mirrored = True
                 elif self.probability <= DESTROY_RECORD_PROBABILITY:
+                    print "Destroying id: " + str(id(self)) + ". Probability: " + str(self.probability)
+                    print "Toggle~~Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
                     self.safe_remove(_world_list, _shadow_list)
 
     def safe_remove(self, _world_list, _shadow_list):
-        if self in _world_list:
+        print "safe_remove contacted"
+        if self.mirror_actor in _world_list:
+            print "Attempting to remove from world"
             _world_list.remove(self.mirror_actor)
+
+        print "Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
         if self in _shadow_list:
             _shadow_list.remove(self)
             if self in _shadow_list:
@@ -528,10 +546,10 @@ class ShadowObj:
 world_list = []
 
 print "########## CREATING OBJECTS #####################"
-world_list.append(ShadowObj("buoy", np.array([5, 1, 0]), 10))
-world_list.append(ShadowObj("buoy", np.array([4, 0, 0]), 10))
-world_list.append(ShadowObj("buoy", np.array([2, 2, 0]), 6))
-world_list.append(ShadowObj("buoy", np.array([10, 2, 3]), 10))
+#world_list.append(ShadowObj("buoy", np.array([5, 1, 0]), 10))
+#world_list.append(ShadowObj("buoy", np.array([4, 0, 0]), 10))
+#world_list.append(ShadowObj("buoy", np.array([2, 2, 0]), 6))
+#world_list.append(ShadowObj("buoy", np.array([10, 2, 3]), 10))
 
 
 #update_actors(np.array([2, 1, 0]), np.array([2.7, 0, 0]), world_list, world_list, [])
@@ -544,7 +562,7 @@ fake_coords.append(["buoy", np.array([2, 5, 0])])
 fake_coords.append(["buoy", np.array([2, 3, 1])])
 fake_coords.append(["buoy", np.array([0, 1, 2])])
 
-fake_error_per_dist = 0
+fake_error_per_dist = .05
 
 def get_detected_list(robot_pos, fake_coords):
     detected_list = []
@@ -586,8 +604,12 @@ class DumbWorld:
 
 class DumbActor:
     def __init__(self, actor_type, position):
-        self.actorType = actor_type
+        self.actor_type = actor_type
         self.position = position
+    def get_position(self):
+        return self.position
+    def update_position(self, new_position):
+        self.position = new_position
 
 robot_position = np.array([0, 0, 0])
 camera_direction = np.array([0, 0, 0])
@@ -604,7 +626,7 @@ while True:
 
     print "~~ShadowList~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     for s in my_shadow_list:
-        print "Shadow -- " + str(id(s)) + " -- Actor type: " + str(s.actor_type) + " -- At: " + str(s.get_position().item(0)) + ", " + str(s.get_position().item(1)) + ", " + str(s.get_position().item(2)) + " --Probability " + str(s.probability)
+        print "Shadow -- " + str(id(s)) + " -- Actor type: " + str(s.actor_type) + " -- At: " + str(s.get_position().item(0)) + ", " + str(s.get_position().item(1)) + ", " + str(s.get_position().item(2)) + " --Probability " + str(s.probability) + " -- Probe " + str(s.probed) + " -- Mirrored: " + str(s.mirrored)
     print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     print "~~ActorList~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     for s in actor_list:
