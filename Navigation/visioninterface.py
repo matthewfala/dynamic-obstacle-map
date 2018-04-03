@@ -10,7 +10,7 @@ import time
 EXP_WEIGHT = 5
 
 # Error (meters) / Dist
-VIEW_ERR = .5 / 7
+VIEW_ERR =  .1 #.2 #.5 / 7
 
 MIN_VIEW_DIST_BUF = 1
 
@@ -97,8 +97,7 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 in_view.append(s)
                 angle_ranges.append([dir_vec, delta_theta])
 
-
-    # Dismiss shadow objects behind other shadow objects  ----------------- Front OBJECT MUST BE ACTOR LIST
+    # Dismiss shadow objects behind mirrored shadow objects   ----------------- Front OBJECT MUST BE ACTOR LIST
     # Check for angle overlaps ( Permute ) - Tested
     dismiss_list = []
     for v1i in range(0, len(in_view)-1):
@@ -136,10 +135,14 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 # v1 is further from robot than v2
                 if d_v1 > d_v2:
                     if in_view[v1i] not in dismiss_list:
-                        dismiss_list.append(in_view[v1i])
+                        # check if front object(v2 is mirrored)
+                        if in_view[v2i].mirrored:
+                            dismiss_list.append(in_view[v1i])
                 else:
                     if in_view[v2i] not in dismiss_list:
-                        dismiss_list.append(in_view[v2i])
+                        # check if front object(v1 is mirrored)
+                        if in_view[v1i].mirrored:
+                            dismiss_list.append(in_view[v2i])
 
     # remove dismiss list from view
     #print "Removing from view: "
@@ -176,41 +179,43 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 pairs.append(pair)
 
                 # remove from unpaired lists
-                unpaired_digitals.remove(pair.digital)
-                unpaired_physicals.remove(pair.physical)
+                if pair.digital in unpaired_digitals:
+                    unpaired_digitals.remove(pair.digital)
+                if pair.physical in unpaired_physicals:
+                    unpaired_physicals.remove(pair.physical)
 
-                # move onto next shadow(digital) object
-                break
+                # NEW- Allowed to pair multiple physicals to the same digital
+                #break
 
     # Verify 1 to 1 paring (REMOVE IN FINAL VERSION)
 
     error_flag = 0
 
     # check physicals
-    for p in pairs:
-
-        identical_digitals = 0
-        for c in pairs:
-            if p.digital is c.digital:
-                identical_digitals += 1
-
-        if identical_digitals != 1:
-            print "1 to 1 radius pairing broken (multiple digitals), "
-            print str(identical_digitals) + " identical digitals exist for obj: " + str(id(p))
-            error_flag = 1
-
-    # check physicals
-    for p in pairs:
-
-        identical_physicals = 0
-        for c in pairs:
-            if p.physical is c.physical:
-                identical_physicals += 1
-
-        if identical_physicals != 1:
-            print "1 to 1 radius pairing broken (multiple physicals), "
-            print str(identical_physicals) + " identical physicals exist for obj: " + str(id(p))
-            error_flag = 1
+    # for p in pairs:
+    #
+    #     identical_digitals = 0
+    #     for c in pairs:
+    #         if p.digital is c.digital:
+    #             identical_digitals += 1
+    #
+    #     if identical_digitals != 1:
+    #         print "1 to 1 radius pairing broken (multiple digitals), "
+    #         print str(identical_digitals) + " identical digitals exist for obj: " + str(id(p))
+    #         error_flag = 1
+    #
+    # # check physicals
+    # for p in pairs:
+    #
+    #     identical_physicals = 0
+    #     for c in pairs:
+    #         if p.physical is c.physical:
+    #             identical_physicals += 1
+    #
+    #     if identical_physicals != 1:
+    #         print "1 to 1 radius pairing broken (multiple physicals), "
+    #         print str(identical_physicals) + " identical physicals exist for obj: " + str(id(p))
+    #         error_flag = 1
 
     # permute should take care of multiple pairs
     # check mix
@@ -268,8 +273,7 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
     # toggle everything in_view
     for s in in_view:
-        print "ID in toggle updater: " + str(id(s))
-        print str(s in shadow_list)
+        #print "ID in toggle updater: " + str(id(s))
         s.toggle_mirrored(world, actor_list, shadow_list) #detected_list)
 
 def in_camera_view(camra_dir, object_dir):
@@ -350,7 +354,6 @@ class ShadowObj:
     #def probe(self, detected_pos, view_distance):
 
     def merge_in(self, actor_list, shadow_list):
-        print "Merge Called"
         for l in shadow_list:
             if l is not self:
                 # check for overlaps
@@ -437,7 +440,7 @@ class ShadowObj:
 
     def update_missing(self, robot_position):
         dist = np.linalg.norm(self.get_position()-robot_position)
-        print "Missing Object -- id: " + str(id(self))
+        #print "Missing Object -- id: " + str(id(self))
         self.sum_found += self.dist_weight(dist)
         self.probability = self.sum_weight / self.sum_found
         self.probed += 1
@@ -492,9 +495,9 @@ class ShadowObj:
         return VIEW_ERR * dist
 
     def toggle_mirrored(self, world, _world_list, _shadow_list):
-        print str(id(self)) + " Made it inside toggle_mirrored"
+        #print str(id(self)) + " Made it inside toggle_mirrored"
         if self.probed >= ACTIVATE_VIEWS:
-            print str(id(self)) + " Made it inside toggle_mirrored Actions"
+            #print str(id(self)) + " Made it inside toggle_mirrored Actions"
 
             if self.mirrored:
                 if REMOVE_PROBABILITY < self.probability:
@@ -507,7 +510,7 @@ class ShadowObj:
                 elif self.probability <= DESTROY_RECORD_PROBABILITY:
                     self.mirrored = False
                     #print "Shadow List id: " + str(_)
-                    print "Toggle~~Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
+                    #print "Toggle~~Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
                     self.safe_remove(_world_list, _shadow_list)
                     self.mirror_actor = None
 
@@ -515,20 +518,20 @@ class ShadowObj:
                 if CREATE_PROBABILITY < self.probability:
                     self.mirror_actor = world.create_actor(self.actor_type, self.get_position())
                     print "Setting Mirrored Actor"
-                    print self.mirror_actor
+                    #print self.mirror_actor
                     self.mirrored = True
                 elif self.probability <= DESTROY_RECORD_PROBABILITY:
                     print "Destroying id: " + str(id(self)) + ". Probability: " + str(self.probability)
-                    print "Toggle~~Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
+                    #print "Toggle~~Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
                     self.safe_remove(_world_list, _shadow_list)
 
     def safe_remove(self, _world_list, _shadow_list):
-        print "safe_remove contacted"
+        #print "safe_remove contacted"
         if self.mirror_actor in _world_list:
             print "Attempting to remove from world"
             _world_list.remove(self.mirror_actor)
 
-        print "Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
+        #print "Is " + str(id(self)) + " in Shadow_List: " + str(self in _shadow_list)
         if self in _shadow_list:
             _shadow_list.remove(self)
             if self in _shadow_list:
@@ -573,7 +576,7 @@ def get_detected_list(robot_pos, fake_coords):
         y = random.gauss(f[1].item(1), err)
         z = random.gauss(f[1].item(2), err)
 
-        print "Random x y z generated: " + str(x) + ", " + str(y) + ", " + str(z)
+        #print "Random x y z generated: " + str(x) + ", " + str(y) + ", " + str(z)
 
         fake_pos = np.array([x, y, z])
 
@@ -611,17 +614,25 @@ class DumbActor:
     def update_position(self, new_position):
         self.position = new_position
 
-robot_position = np.array([0, 0, 0])
+robot_position = np.array([-5.0, -5.0, -5.0])
 camera_direction = np.array([0, 0, 0])
 actor_list = []
 my_shadow_list = []
 
 world = DumbWorld(actor_list)
+
 # run simulation
+dt = .4
 while True:
     detected_list = get_detected_list(robot_position, fake_coords)
     update_actors(world, camera_direction, robot_position, actor_list, my_shadow_list, detected_list)
-    #time.sleep(.5)
+
+    v = np.array([.5, .5, .5])
+    dx = np.multiply(v, dt)
+    robot_position += dx
+
+    print "########################################################################################################################################################"
+    print " "
     print "~~Robot~~Position~~~~~~~~~~~~~~" + str(robot_position.item(0)) + ", " + str(robot_position.item(1)) + ", " + str(robot_position.item(2)) + " ~~~~"
 
     print "~~ShadowList~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -638,6 +649,8 @@ while True:
 
     #elif key == 72:  # Up arrow
     #    robot_position = np.subtract(robot_position + np.array[0, .3, 0])
+
+    time.sleep(dt)
 
 
 

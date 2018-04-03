@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="844f47cf-9d9f-4301-864f-fb69377797df" name="Default" comment="">
+    <list default="true" id="844f47cf-9d9f-4301-864f-fb69377797df" name="Default" comment="If I don't">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/Navigation/visioninterface.py" afterPath="$PROJECT_DIR$/Navigation/visioninterface.py" />
     </list>
@@ -37,8 +37,8 @@
       <file leaf-file-name="visioninterface.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Navigation/visioninterface.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="436" column="24" lean-forward="true" selection-start-line="436" selection-start-column="24" selection-end-line="436" selection-end-column="24" />
+            <state relative-caret-position="10415">
+              <caret line="574" column="43" lean-forward="true" selection-start-line="574" selection-start-column="43" selection-end-line="574" selection-end-column="43" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -87,36 +87,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>update_position</find>
-      <find>m_pos.item</find>
-      <find>DISTANCE TO</find>
-      <find>print</find>
-      <find>overlap</find>
-      <find>overlap&quot;</find>
-      <find>distance</find>
-      <find>weight +=</find>
+      <find>shadow_list</find>
+      <find>Missing Obje</find>
+      <find>unpaired</find>
+      <find>DESTROY_</find>
+      <find>Destroying</find>
+      <find>155297032</find>
+      <find>15529703</find>
+      <find>154536976</find>
+      <find>mirror_actor =</find>
+      <find>160060240</find>
+      <find>mirror_actor</find>
+      <find>Setting</find>
+      <find>mirrored = True</find>
+      <find>Toggle</find>
+      <find>Destr</find>
+      <find>toggle_mirr</find>
+      <find>Destroy</find>
+      <find>updater</find>
+      <find>toggle u</find>
+      <find>remo</find>
+      <find>toggle_mi</find>
+      <find>149709168</find>
+      <find>149609648</find>
       <find>probed</find>
-      <find>sum_weight</find>
-      <find>sum_found</find>
-      <find>for</find>
-      <find>sum_x</find>
-      <find>print</find>
-      <find>Safely Removed: id: 151563800</find>
-      <find>151563800</find>
-      <find>Safely</find>
-      <find>Creating</find>
-      <find>get_actor_type</find>
-      <find>get_position</find>
-      <find>merge_in</find>
-      <find>Safely Removed</find>
-      <find>distance_between</find>
+      <find>safe_</find>
+      <find>Is &quot;</find>
+      <find>pairing</find>
+      <find>PAIRING</find>
       <find>safe_remove</find>
-      <find>merge</find>
-      <find>==</find>
-      <find>is</find>
-      <find>is</find>
-      <find>probability</find>
-      <find>missing</find>
+      <find>print</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -151,10 +151,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="11" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-11" />
     <option name="y" value="11" />
-    <option name="width" value="3200" />
+    <option name="width" value="1822" />
     <option name="height" value="1720" />
   </component>
   <component name="ProjectView">
@@ -452,24 +452,38 @@
       <option name="project" value="LOCAL" />
       <updated>1522227652301</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merge function is now working properly&#10;Digital-Physical Pairing still not working">
+      <created>1522559908470</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1522559908470</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Made it functional but needs calibration&#10;-Need to adjust how objects behind other objects are dealt with">
+      <created>1522714908655</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1522714908655</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="11" y="11" width="3200" height="1720" extended-state="0" />
+    <frame x="-13" y="-13" width="3226" height="1746" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12917455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.128125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1310712" sideWeight="0.20415878" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19359058" sideWeight="0.3359375" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26786658" sideWeight="0.49375" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26746505" sideWeight="0.78008825" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1310712" sideWeight="0.7958412" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5905821" sideWeight="0.6640625" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.02488089" sideWeight="0.49895832" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55461085" sideWeight="0.49895832" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -520,7 +534,10 @@
     <MESSAGE value="Finished dismissing all hidden objects&#10;Finished object updater&#10;Started merge function" />
     <MESSAGE value="Finished the merge objects function&#10;Begin to to test the update function" />
     <MESSAGE value="Finished Everything&#10;Now for the testing ;)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Everything&#10;Now for the testing ;)" />
+    <MESSAGE value="Merge function is now working properly&#10;Digital-Physical Pairing still not working" />
+    <MESSAGE value="Made it functional but needs calibration&#10;-Need to adjust how objects behind other objects are dealt with" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made it functional but needs calibration&#10;-Need to adjust how objects behind other objects are dealt with" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -960,8 +977,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Navigation/visioninterface.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="436" column="24" lean-forward="true" selection-start-line="436" selection-start-column="24" selection-end-line="436" selection-end-column="24" />
+        <state relative-caret-position="10415">
+          <caret line="574" column="43" lean-forward="true" selection-start-line="574" selection-start-column="43" selection-end-line="574" selection-end-column="43" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
