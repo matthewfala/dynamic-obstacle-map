@@ -14,7 +14,7 @@
 # Half in view camera objects need separate case -- Not updated, but used in view-block
 # Support multiple actors
 #   Update separately, but include all actors in the view-block dismissal
-#
+# Fix out of min dist polling problem
 
 import numpy as np
 import math
@@ -98,8 +98,11 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
     # Find all objects in shadow_list that should be updated
     in_view = [] # contains shadow object, and angle range
+    in_close_proximity = [] # contains objects that are too close to camera to detect // These will block the camera
+                            # use for dismissals
 
     angle_ranges = []
+    close_prox_angle_ranges = []
 
     # Upload objects within range
     for s in shadow_list:
@@ -109,8 +112,7 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
 
             # Check if object is within within view range
             dist = np.linalg.norm(robot_to_object)
-            if RANGE_MIN < dist < RANGE_MAX:
-
+            if RANGE_MIN <= dist <= RANGE_MAX:
                 # Angle range for dismissing objects behind objects
                 dir_vec = robot_to_object
                 delta_theta = math.atan(s.get_radius()/dist)
@@ -119,11 +121,26 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 in_view.append(s)
                 angle_ranges.append([dir_vec, delta_theta])
 
+            elif dist < RANGE_MIN:
+                # Use in dismissals
+                in_close_proximity.append(s)
+                close_prox_angle_ranges.append()
+
     # Dismiss shadow objects behind mirrored shadow objects   ----------------- Front OBJECT MUST BE ACTOR LIST
     # Check for angle overlaps ( Permute ) - Tested
     dismiss_list = []
-    for v1i in range(0, len(in_view)-1):
-        for v2i in range(v1i + 1, len(in_view)):
+    view_blockers = in_close_proximity + in_view
+
+    print "Close Proximity length: " + str(len(in_close_proximity))
+
+    for v1i in range(0, len(view_blockers)-1):
+        for v2i in range(v1i + 1, len(view_blockers)):
+
+            # don't compare two close_proximity objects
+            if v1i < len(in_close_proximity) and v2i < len(in_close_proximity):
+                break
+            elif v1i < len(in_close_proximity) and v2i < len(in_close_proximity):
+                print "trying to block with a close proximity object"
 
             v1 = angle_ranges[v1i][0]
             v2 = angle_ranges[v2i][0]
@@ -339,7 +356,7 @@ class ShadowObj:
 
                     # Self has the least credibility
                     # Merge over-rides -> just delete, self is smaller (when self r - r_distance_buf)
-                    if l.get_radius() > (self.get_radius() - self.get_radius_error(MIN_VIEW_DIST_BUF)):
+                    if l.get_radius() > (self.get_radius() - self.get_radius_error(MIN_VIEW_DIST_BUF)): # Works only for linear radius_error functions
                         # merge position
                         m_pos = self.get_position()
                         l.sum_x += self.sum_x #m_pos.item(0)
@@ -597,6 +614,9 @@ print "########## CREATING OBJECTS #####################"
 
 fake_coords = []
 fake_coords.append(["buoy", np.array([5, 2, 3])])
+fake_coords.append(["buoy", np.array([.2, 0, 0])])
+fake_coords.append(["buoy", np.array([0, .2, 0])])
+fake_coords.append(["buoy", np.array([0, 0, .2])])
 fake_coords.append(["buoy", np.array([1, 2, 2])])
 fake_coords.append(["buoy", np.array([6, 3, 1])])
 fake_coords.append(["buoy", np.array([2, 5, 0])])
@@ -654,8 +674,8 @@ class DumbActor:
 
 
 # Setup fake worlds and robots
-robot_position = np.array([0.0, 0.0, 0.0])
-v = np.array([-.5, -.5, -.5])
+robot_position = np.array([5.0, -5.0, 0.0])
+v = np.array([0,0,0]) #[-.5, -.5, -.5])
 camera_direction = np.array([0, 0, 0])
 actor_list = []
 my_shadow_list = []
@@ -673,6 +693,10 @@ if True:
     start_time = time.clock()
 
     for i in range(0, test_cycles):
+
+        if i > 20:
+            robot_position = np.array([0.0, 0.0, 0.0])
+
         detected_list = get_detected_list(robot_position, fake_coords)
         update_actors(world, camera_direction, robot_position, actor_list, my_shadow_list, detected_list)
 
