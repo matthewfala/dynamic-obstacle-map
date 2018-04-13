@@ -2,7 +2,7 @@ import socket
 import getchar
 
 def Main():
-	host = '127.0.0.1'
+	host = '10.0.0.2'
 	port = 5000
 
 	mySocket = socket.socket()
@@ -10,7 +10,6 @@ def Main():
 
 	getch = getchar.getch
 
-	print('>', end='')
 	message = getch()
 
 	while message != 'q':
@@ -19,7 +18,6 @@ def Main():
 
 		print('Recieved fron server: ' + data)
 
-		print('>', end='')
 		message = getch()
 
 	mySocket.close()
