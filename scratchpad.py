@@ -106,8 +106,18 @@ def removeAloha(b):
 removeAloha(a)
 print a
 
-while True:
-    key = ord(getch())
-    print key
-    time.sleep(.5)
+# while True:
+#     key = ord(getch())
+#     print key
+#     time.sleep(.5)
+
+# Permute test
+arr1 = [1, 2, 3, 4, 5]
+arr2 = [6, 7, 8]
+
+for i1 in range(0, len(arr1)):
+    for i2 in range(0, len(arr2)):
+        print str(arr1[i1]) + str(arr2[i2])
+
+
 
