@@ -3,6 +3,8 @@
 # Engineers
 -Callum Pe - callumpe@usc.edu
 
+-Matthew Fala - fala@usc.edu - Vision Interface & Landmark Positioning Coordinator 
+
 ##########################################################################
 # OBSTACLES
 ##########################################################################

@@ -9,12 +9,45 @@
 # 0.000185974391506 s/update
 
 # ~~ To Do ~~
-# Close Proximity view-block dismissals
+
+# Close Proximity view-block dismissals ( FIXED )
 # Close proximity objects are not in in_view list, but can cloud up the camera
+#   OLD POSSIBLE ERRORS
+#       Objects within 1 meter from the point 0,0,0 are not added to the list!
+#       May be resolved -- Was just clustering objects
+#       Not removing all that is too close
+#   SOLUTION:
+#       Leave close proximity objects in in_view when finding out what to block
+#       Remove after
+
+
+# Need to block detections that are behind actors ( FIXED )
+#   FIXED
+#   Solution:
+#       Sanitize unpaired physicals before creating new objects
+#           Check range and view blockage
+#       Logic:
+#           If there is a shadow object behind an actor (that may be detected) it will be removed from in_view
+#           This will leave its physical unpaired
+#           Unpaired physicals are checked to see if
+#               they are behind any actors as well.
+#               physical is removed if behind an actor
+#           Accounts for 2 blockages
+#               1) misread - detected object behind an actor that as not there
+#               2) see_through - detected object behind an actor that is there
+#                   behind obj not updated
+#       Future Requirements:
+#           detected object get_radius() returns same radius as new object of the same type ( to disallow merging )
+
+# UNRESOLVED:
 # Half in view camera objects need separate case -- Not updated, but used in view-block
 # Support multiple actors
 #   Update separately, but include all actors in the view-block dismissal
 # Fix out of min dist polling problem
+
+# CUSTOMIZATION:
+# Add measurements to actor settings about object radius
+
 
 import numpy as np
 import math
@@ -27,7 +60,7 @@ import time
 EXP_WEIGHT = 5
 
 # Error (meters) / Dist
-VIEW_ERR =  0.1 #.2 #.5 / 7
+VIEW_ERR = 0.1 #.2 #.5 / 7
 
 MIN_VIEW_DIST_BUF = 1
 
@@ -93,6 +126,7 @@ def euler_vector_rotate(v, alpha, beta, gamma):
     return v_gamma
 
 
+# not dependant on actor type
 # camera direction is in relation to the world
 def update_actors(world, camera_direction, robot_position, actor_list, shadow_list, detected_list):
 
@@ -102,17 +136,20 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                             # use for dismissals
 
     angle_ranges = []
-    close_prox_angle_ranges = []
 
-    # Upload objects within range
+    # list of mirrored shadow objects
+    shadow_actor_list = []
+
+
+    # Upload objects under RANGE_MAX (Leave close proximity objects to allow them to block)
     for s in shadow_list:
         robot_to_object = s.get_position() - robot_position
 
         if in_camera_view(camera_direction, robot_to_object):
 
-            # Check if object is within within view range
+            # Check if object is further than view range
             dist = np.linalg.norm(robot_to_object)
-            if RANGE_MIN <= dist <= RANGE_MAX:
+            if dist <= RANGE_MAX:
                 # Angle range for dismissing objects behind objects
                 dir_vec = robot_to_object
                 delta_theta = math.atan(s.get_radius()/dist)
@@ -121,26 +158,22 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 in_view.append(s)
                 angle_ranges.append([dir_vec, delta_theta])
 
-            elif dist < RANGE_MIN:
+            # Hold onto distance values less than RANGE_MIN for future removal
+            if dist < RANGE_MIN:
                 # Use in dismissals
                 in_close_proximity.append(s)
-                close_prox_angle_ranges.append()
 
-    # Dismiss shadow objects behind mirrored shadow objects   ----------------- Front OBJECT MUST BE ACTOR LIST
+        # populate shadow actor list
+        if s.mirrored:
+            shadow_actor_list.append(s)
+            print "Added to shadow_actor_list!"
+
+    # Dismiss shadow objects behind mirrored shadow objects   ----------------- Front OBJECT MUST BE IN ACTOR LIST
     # Check for angle overlaps ( Permute ) - Tested
     dismiss_list = []
-    view_blockers = in_close_proximity + in_view
 
-    print "Close Proximity length: " + str(len(in_close_proximity))
-
-    for v1i in range(0, len(view_blockers)-1):
-        for v2i in range(v1i + 1, len(view_blockers)):
-
-            # don't compare two close_proximity objects
-            if v1i < len(in_close_proximity) and v2i < len(in_close_proximity):
-                break
-            elif v1i < len(in_close_proximity) and v2i < len(in_close_proximity):
-                print "trying to block with a close proximity object"
+    for v1i in range(0, len(in_view)-1):
+        for v2i in range(v1i + 1, len(in_view)):
 
             v1 = angle_ranges[v1i][0]
             v2 = angle_ranges[v2i][0]
@@ -187,6 +220,13 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
     for r in dismiss_list:
         # print "Removing -- Id: " + str(id(r)) + ", Object type: " + str(r.actor_type) + ", Position: " + str(r.get_position())
         in_view.remove(r)
+        print "Removing what is blocked from view"
+
+    # remove objects from view that are closer than RANGE_MIN
+    for v in in_view:
+        if v in in_close_proximity:
+            in_view.remove(v)
+            print "Removing what is too close"
 
     # in_view, then detected_list
     pairs = []
@@ -225,9 +265,7 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
                 #break
 
     # Verify 1 to 1 paring (REMOVE IN FINAL VERSION)
-
     error_flag = 0
-
 
     # check physicals
     for p in pairs:
@@ -242,7 +280,6 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
             print str(identical_physicals) + " identical physicals exist for obj: " + str(id(p))
             error_flag = 1
 
-
     # update unpaired as missing
     for m in unpaired_digitals:
         m.update_missing(robot_position)
@@ -253,8 +290,61 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
         p.digital.update(p.physical.get_position(), robot_position)
         p.digital.merge_in(actor_list, shadow_list)
 
-    # create objects not paired
-    #print "~~ Creating New Objects ~~"
+    # sanitize unpaired_physicals
+    dismiss_list = []
+
+    # remove physical objects closer than RANGE_MIN
+    for p in unpaired_physicals:
+        v1 = p.get_position() - robot_position
+        d_v1 = np.linalg.norm(v1)
+        if d_v1 < RANGE_MIN:
+            if p not in dismiss_list:
+                dismiss_list.append(p)
+
+    # remove unpaired physical objects behind actors
+    for a in shadow_actor_list:
+        for p in unpaired_physicals:
+
+            v1 = a.get_position() - robot_position
+            v2 = p.get_position() - robot_position
+
+            theta_v1 = math.atan(a.get_radius() / dist)
+            theta_v2 = math.atan(p.get_radius() / dist)
+
+            # get magnitudes
+            d_v1 = np.linalg.norm(v1)
+            d_v2 = np.linalg.norm(v2)
+
+            #  get angle
+            cos_angle_between = np.dot(v1, v2) / (d_v1 * d_v2)
+
+            if cos_angle_between > 1:
+                print "Error: cos_angle_between is greater than 1: " + str(cos_angle_between)
+                print "I'll set it to 1"
+                cos_angle_between = 1
+            elif cos_angle_between < -1:
+                print "Error: cos_angle_between is less than -1: " + str(cos_angle_between)
+                print "I'll set it to -1"
+                cos_angle_between = -1
+
+            # get angle
+            angle_between = math.acos(cos_angle_between)
+
+            # Remove if angle is less than sum of angles (angles overlap)
+            if angle_between < theta_v1 + theta_v2:
+                # if actor is in front of p, remove p
+                # Note: p is not within any radius or else it would have been paired
+                if d_v1 < d_v2:  # v1 = a & v2 = p
+                    if p not in dismiss_list:
+                        dismiss_list.append(p)
+
+    # remove physicals in list
+    for d in dismiss_list:
+        unpaired_physicals.remove(d)
+
+    # sanitation complete
+
+    # create objects not paired physicals
     for n in unpaired_physicals:
         # check if in range
         dist = np.linalg.norm(n.get_position() - robot_position)
@@ -370,9 +460,13 @@ class ShadowObj:
                         l.sum_r_err += self.sum_r_err
                         l.sum_r_weight += self.sum_r_weight
                         l.refresh_radius()
+
+                        # merge polls
+                        l.probed += 1
+
                         print "Merged newly created"
                     else:
-                        print "Failed to merge newly created"
+                        print "Chose to not merge newly created"
 
                     # delete self # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WILL CAUSE PROBLEMS FOR UPDATING
                     self.safe_remove(actor_list, shadow_list)
@@ -410,6 +504,10 @@ class ShadowObj:
                             l.sum_r_err += self.sum_r_err
                             l.sum_r_weight += self.sum_r_weight
                             l.refresh_radius()
+
+                            # merge polls
+                            l.probed += self.probed
+
                             print "Merge success"
 
                         else:
@@ -438,6 +536,10 @@ class ShadowObj:
                             self.sum_r_err += l.sum_r_err
                             self.sum_r_weight += l.sum_r_weight
                             self.refresh_radius()
+
+                            # merge polls
+                            self.probed += l.probed
+
                             print "Merge Success"
 
                         else:
@@ -613,15 +715,15 @@ print "########## CREATING OBJECTS #####################"
 #update_actors(np.array([2, 1, 0]), np.array([2.7, 0, 0]), world_list, world_list, [])
 
 fake_coords = []
-fake_coords.append(["buoy", np.array([5, 2, 3])])
-fake_coords.append(["buoy", np.array([.2, 0, 0])])
-fake_coords.append(["buoy", np.array([0, .2, 0])])
-fake_coords.append(["buoy", np.array([0, 0, .2])])
-fake_coords.append(["buoy", np.array([1, 2, 2])])
-fake_coords.append(["buoy", np.array([6, 3, 1])])
-fake_coords.append(["buoy", np.array([2, 5, 0])])
-fake_coords.append(["buoy", np.array([2, 3, 1])])
-fake_coords.append(["buoy", np.array([0, 1, 2])])
+#fake_coords.append(["buoy", np.array([5, 2, 3])])
+#fake_coords.append(["buoy", np.array([10, 0, 0])])
+#fake_coords.append(["buoy", np.array([.1, .1, .2])])
+#fake_coords.append(["buoy", np.array([1, 2, 2])])
+#fake_coords.append(["buoy", np.array([6, 3, 1])])
+#fake_coords.append(["buoy", np.array([2, 5, 0])])
+#fake_coords.append(["buoy", np.array([2, 3, 1])])
+fake_coords.append(["buoy", np.array([0, 0, 0])])
+
 
 fake_error_per_dist = .05
 
@@ -646,12 +748,16 @@ class DetectedObject():
     def __init__(self, _actor_type, _position):
         self.actor_type = _actor_type
         self.position = _position
+        self.radius = 1
 
     def get_actor_type(self):
         return self.actor_type
 
     def get_position(self):
         return self.position
+
+    def get_radius(self):
+        return self.radius
 
 
 class DumbWorld:
@@ -674,8 +780,8 @@ class DumbActor:
 
 
 # Setup fake worlds and robots
-robot_position = np.array([5.0, -5.0, 0.0])
-v = np.array([0,0,0]) #[-.5, -.5, -.5])
+robot_position = np.array([-5.0, -5.0, -5.0])
+v = np.array([0, 0, 0])
 camera_direction = np.array([0, 0, 0])
 actor_list = []
 my_shadow_list = []
@@ -686,16 +792,14 @@ if True:
     # run timed simulation
     test_cycles = 10000
 
-    dt = .4
+    mytime = 0
+    dt = .2
     ctr = 0
 
     # Mark Time
     start_time = time.clock()
 
     for i in range(0, test_cycles):
-
-        if i > 20:
-            robot_position = np.array([0.0, 0.0, 0.0])
 
         detected_list = get_detected_list(robot_position, fake_coords)
         update_actors(world, camera_direction, robot_position, actor_list, my_shadow_list, detected_list)
@@ -715,7 +819,16 @@ if True:
         print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 
         time.sleep(dt)
+        mytime += dt
         ctr += 1
+
+        if ctr == 10:
+            fake_coords.append(["buoy", np.array([-3, -3.0, -3.0])])
+            fake_coords.append(["buoy", np.array([-2, -3.0, -2.0])])
+            # fake_coords.append(["buoy", np.array([3, 3, 3])])
+
+        if ctr == 20:
+            robot_position = np.array([-3.3, -3.3, -3.3])
 
 
 # $$$$$$$$$$$$$$$$$$$$ TIMED TEST $$$$$$$$$$$$$$$$$$$$$$$$$
