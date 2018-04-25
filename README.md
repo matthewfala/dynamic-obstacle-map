@@ -1,11 +1,10 @@
 "# usc-navigation-2018"
 
 # Engineers
--Callum Pe - callumpe@usc.edu
+- Callum Pe - callumpe@usc.edu
 
--Matthew Fala - fala@usc.edu - Vision Interface & Landmark Positioning Coordinator 
+- Matthew Fala - fala@usc.edu - Vision Interface & Landmark Positioning Coordinator 
 
--Matthew Fala - fala@usc.edu - Vision Interface & Landmark Positioning Coordinator 
 
 - pedrolei
 
