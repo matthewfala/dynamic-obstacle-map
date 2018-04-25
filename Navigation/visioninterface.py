@@ -42,17 +42,23 @@
 # UNRESOLVED:
 # Half in view camera objects need separate case -- Not updated, but used in view-block
 # Support multiple actors
+#   Solution -- Merge only like actors (Done)
+#       Pair only like actor types ()
 #   Update separately, but include all actors in the view-block dismissal
+# Accept views if blocked
 # Fix out of min dist polling problem
 
 # CUSTOMIZATION:
 # Add measurements to actor settings about object radius
 
-
 import numpy as np
 import math
 import random
 import time
+import queue
+
+# Vision queue
+q = queue.Queue()
 
 # Constants
 
@@ -124,7 +130,6 @@ def euler_vector_rotate(v, alpha, beta, gamma):
 
     #return fully rotated array
     return v_gamma
-
 
 # not dependant on actor type
 # camera direction is in relation to the world
@@ -202,7 +207,6 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
             # Remove if angle is less than sum of angles (angles overlap)
             if angle_between < theta_v1 + theta_v2:
                 #print "objects: " + str(v1) + " and " + str(v2) + " overlap"
-
                 # Find which obj is in front
                 # v1 is further from robot than v2
                 if d_v1 > d_v2:
@@ -250,7 +254,10 @@ def update_actors(world, camera_direction, robot_position, actor_list, shadow_li
             # get the radius to each object (should only find one pair)
             # radius must not overlap (merge)
             distance_to_detected = np.linalg.norm(in_view[si].get_position() - detected_list[di].get_position())
-            if distance_to_detected < in_view[si].get_radius():
+            in_radius = distance_to_detected < in_view[si].get_radius()
+            same_type = in_view[si].actor_type == detected_list[di].actor_type
+
+            if in_radius and same_type:
                 #print "PAIRING: In view at " + str(in_view[si].get_position()) + " with detected at " + str(detected_list[di].get_position())
                 pair = Pair(in_view[si], detected_list[di])
                 pairs.append(pair)
@@ -440,9 +447,13 @@ class ShadowObj:
     def merge_in_new(self, actor_list, shadow_list):
         for l in shadow_list:
             if l is not self:
+                # check for same actor type
+                same_type = self.actor_type == l.actor_type
                 # check for overlaps
                 dist_between = np.linalg.norm(self.get_position() - l.get_position())
-                if dist_between < (self.get_radius() + l.get_radius()):
+                overlapping = dist_between < (self.get_radius() + l.get_radius())
+
+                if same_type and overlapping:
 
                     # Self has the least credibility
                     # Merge over-rides -> just delete, self is smaller (when self r - r_distance_buf)
@@ -476,15 +487,17 @@ class ShadowObj:
 
                     break
 
-
     def merge_in(self, actor_list, shadow_list):
 
         for l in shadow_list:
             if l is not self:
+                # check for same actor type
+                same_type = self.actor_type == l.actor_type
                 # check for overlaps
                 dist_between = np.linalg.norm(self.get_position() - l.get_position())
-                if dist_between < (self.get_radius() + l.get_radius()):
+                overlapping = dist_between < (self.get_radius() + l.get_radius())
 
+                if same_type and overlapping:
                     # check who has more credibility
 
                     # l has more credibility
@@ -547,7 +560,6 @@ class ShadowObj:
 
                         # delete l  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!WILL CAUSE PROBLEMS FOR UPDATING WORLD
                         l.safe_remove(actor_list, shadow_list)
-
 
                         # call merge_in on new merged obj (incase overlapping new obj)
                         self.merge_in(actor_list, shadow_list)
