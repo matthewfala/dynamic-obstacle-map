@@ -5,6 +5,17 @@
 
 -Matthew Fala - fala@usc.edu - Vision Interface & Landmark Positioning Coordinator 
 
+-Matthew Fala - fala@usc.edu - Vision Interface & Landmark Positioning Coordinator 
+
+- pedrolei
+
+- ZhiruiFeng
+
+- nemosx
+
+- congxinUSC
+
+
 ##########################################################################
 # OBSTACLES
 ##########################################################################
