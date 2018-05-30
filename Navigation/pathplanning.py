@@ -1,3 +1,5 @@
+# Can we remove this file in our final version? -Matt
+
 import numpy as np
 import math
 def rotate(vector,theta):

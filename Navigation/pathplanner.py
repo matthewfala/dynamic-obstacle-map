@@ -1,3 +1,4 @@
+# I propose we rename this point2point.py -Matt
 from kordermath import kordermath as km
 import numpy as np
 from numpy.linalg import inv
