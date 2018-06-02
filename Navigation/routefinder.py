@@ -3,7 +3,7 @@ import numpy as np
 import math
 
 TURN_COST = 5
-VERTICAL_COST = 8
+VERTICAL_COST = 10
 
 class Path:
     def __init__(self, planning_mode, obstacles, start_point, end_point, nodes_per_meter):
