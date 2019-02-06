@@ -1,0 +1,48 @@
+#LOG
+# 4/3 Float Division ~~ 2038 Cycles in 5 Seconds
+# Bench Mark - Regular Division - on Matt's HP Envy
+# Updated World 10000 times in 1.85974391506 seconds
+# 0.000185974391506 s/update
+
+# ~~ To Do ~~
+
+# Close Proximity view-block dismissals ( FIXED )
+# Close proximity objects are not in in_view list, but can cloud up the camera
+#   OLD POSSIBLE ERRORS
+#       Objects within 1 meter from the point 0,0,0 are not added to the list!
+#       May be resolved -- Was just clustering objects
+#       Not removing all that is too close
+#   SOLUTION:
+#       Leave close proximity objects in in_view when finding out what to block
+#       Remove after
+
+
+# Need to block detections that are behind actors ( FIXED )
+#   FIXED
+#   Solution:
+#       Sanitize unpaired physicals before creating new objects
+#           Check range and view blockage
+#       Logic:
+#           If there is a shadow object behind an actor (that may be detected) it will be removed from in_view
+#           This will leave its physical unpaired
+#           Unpaired physicals are checked to see if
+#               they are behind any actors as well.
+#               physical is removed if behind an actor
+#           Accounts for 2 blockages
+#               1) misread - detected object behind an actor that as not there
+#               2) see_through - detected object behind an actor that is there
+#                   behind obj not updated
+#       Future Requirements:
+#           detected object get_radius() returns same radius as new object of the same type ( to disallow merging )
+
+# UNRESOLVED:
+# Half in view camera objects need separate case -- Not updated, but used in view-block
+# Support multiple actors
+#   Solution -- Merge only like actors (Done)
+#       Pair only like actor types ()
+#   Update separately, but include all actors in the view-block dismissal
+# Accept views if blocked
+# Fix out of min dist polling problem
+
+# CUSTOMIZATION:
+# Add measurements to actor settings about object radius
