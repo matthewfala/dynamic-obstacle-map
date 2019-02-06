@@ -1,5 +1,5 @@
-# DOM -- Dynamic Obstacle Map
-## by Matthew J.W. Fala
+# DOM (Dynamic Obstacle Map)
+#### by Matthew J.W. Fala
 
 
 # Notes
@@ -9,10 +9,6 @@ _____
 
 # Documentation
 
-############################################
-#       DOM (Dynamic Obstacle Map)         #
-#       By Matthew J.W. Fala               #
-############################################
 
 ## Description:
 ... The DOM (Dynamic Obstacle Map) was written for USC AUV by Matthew J.W. Fala.
