@@ -2,273 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="faf9e46a-0844-4cb2-a2c6-b67cab5b190e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/simulation.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ComputerVision/cv_API.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/emulator.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/kordermath.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/navsystem.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/pathplanner.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/pathplanning.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/routefinder.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/simwriter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/visioninterface.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Navigation/world.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RemoteControl/client.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RemoteControl/server.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RemoteControl/xbox_controller_demo.pdf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Materials.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Materials/Obstracle Material.mat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Materials/Obstracle Material.mat.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Models.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Models/USC_Turtle.obj" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Models/USC_Turtle.obj.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/AUV.prefab" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/AUV.prefab.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/Capsule.prefab" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/Capsule.prefab.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/Cylinder.prefab" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/Cylinder.prefab.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/Sphere.prefab" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Prefabs/Sphere.prefab.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scenes.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scenes/Main.unity" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scenes/Main.unity.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/AUVController.cs" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/AUVController.cs.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/BasicObject.cs" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/BasicObject.cs.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/GameData.cs" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/GameData.cs.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/ObjectCreator.cs" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/ObjectCreator.cs.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/SplitScreenController.cs" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/Scripts/SplitScreenController.cs.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000000.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000000.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000001.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000001.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000002.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000002.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000003.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000003.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000004.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000004.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000005.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000005.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000006.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000006.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000007.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000007.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000008.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000008.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000009.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000009.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000010.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000010.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000011.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000011.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000012.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000012.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000013.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000013.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000014.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000014.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000015.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000015.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000016.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000016.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000017.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000017.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000018.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000018.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000019.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000019.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000020.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000020.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000021.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000021.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000022.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000022.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000023.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000023.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000024.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000024.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000025.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000025.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000026.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000026.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000027.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000027.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000028.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000028.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000029.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000029.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000030.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000030.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000031.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000031.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000032.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000032.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000033.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000033.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000034.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000034.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000035.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000035.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000036.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000036.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000037.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000037.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000038.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000038.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000039.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000039.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000040.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000040.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000041.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000041.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000042.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000042.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000043.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000043.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000044.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000044.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000045.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000045.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000046.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000046.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000047.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000047.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000048.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000048.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000049.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000049.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000050.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000050.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000051.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000051.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000052.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000052.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000053.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000053.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000054.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000054.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000055.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000055.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000056.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000056.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000057.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000057.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000058.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000058.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000059.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000059.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000060.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000060.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000061.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000061.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000062.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000062.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000063.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000063.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000064.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000064.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000065.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000065.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000066.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000066.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000067.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000067.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000068.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000068.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000069.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000069.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000070.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000070.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000071.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000071.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000072.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000072.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000073.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000073.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000074.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000074.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000075.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000075.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000076.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000076.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000077.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000077.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000078.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000078.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000079.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000079.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000080.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000080.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000081.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000081.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000082.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000082.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000083.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000083.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000084.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000084.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000085.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000085.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000086.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000086.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000087.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000087.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000088.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000088.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000089.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000089.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000090.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000090.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000091.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000091.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000092.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000092.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000093.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000093.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000094.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000094.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000095.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000095.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000096.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000096.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000097.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000097.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000098.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000098.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000099.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/000099.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/sample.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/Assets/StreamingAssets/sample.json.meta" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/AudioManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/ClusterInputManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/DynamicsManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/EditorBuildSettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/EditorSettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/GraphicsSettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/InputManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/NavMeshAreas.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/NetworkManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/Physics2DSettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/ProjectSettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/ProjectVersion.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/QualitySettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/TagManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/TimeManager.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/ProjectSettings/UnityConnectSettings.asset" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/README.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/UnityPackageManager/manifest.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Visualization/helper/mock_stream_gen.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -409,16 +143,25 @@
       <option name="presentableId" value="Default" />
       <updated>1549429468264</updated>
     </task>
+    <task id="LOCAL-00001" summary="New Branch First Commit">
+      <created>1549432965346</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1549432965346</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-13" y="-13" width="3226" height="1746" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1246875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.058862" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962722" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962722" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -435,6 +178,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="New Branch First Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Branch First Commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
