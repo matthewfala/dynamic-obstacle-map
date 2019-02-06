@@ -2,8 +2,12 @@
 #### by Matthew J.W. Fala
 
 
-# Notes
+# Credits
+- Coordinated by Matthew Fala
+- DOM by Matthew Fala
+- Camera InView Function by Jaimie Chen
 - KOrderMath by Kishore Venkateshan
+- Euler Rotation from UTexas CS354 via web
 
 _____
 
