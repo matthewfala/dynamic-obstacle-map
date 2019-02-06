@@ -1,8 +1,8 @@
 # DOM (Dynamic Obstacle Map)
-#### by Matthew J.W. Fala
+#### by Matthew J.W. Fala, Jaimie Chen
 
 
-# Credits
+## Credits
 - Coordinated by Matthew Fala
 - DOM by Matthew Fala
 - Camera InView Function by Jaimie Chen
@@ -20,15 +20,14 @@ It consolidates all Computer Vision Obstacle discoveries and dynamically generat
 Objects that have a high threshold probability of existence are logged to a FOM or Fixed Obstacle Map on
 the client side.
 
-# Python Interface
+## Python Interface
  Call update_actors to update the world
 
-# ROS Interface (Needs Implementation)
-#
-# Interface: The interface is ROS Message.
+## ROS Interface (Needs Implementation)
+#### Interface: ROS Message
 >* ROS Topic: /fom
 
-# Message Parameters:
+## MSG Parameters:
 >*   string cmd
 >*   string type
 >*   int id
@@ -38,9 +37,8 @@ the client side.
 
 # Continuation:
 
-##########################################################################
-# OBSTACLES
-##########################################################################
+## OBSTACLES
+
 - Gate
 - Dice Buoy
 - Chip Dispenser
